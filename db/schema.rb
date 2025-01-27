@@ -10,9 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_27_121132) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_27_125745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "baskets", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_baskets_on_order_id"
+    t.index ["product_id"], name: "index_baskets_on_product_id"
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "van_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+    t.index ["van_id"], name: "index_favourites_on_van_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "van_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["van_id"], name: "index_orders_on_van_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.float "price"
+    t.string "photo"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.float "rating"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_reviews_on_order_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "van_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_stores_on_product_id"
+    t.index ["van_id"], name: "index_stores_on_van_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +78,31 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_27_121132) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vans", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_vans_on_user_id"
+  end
+
+  add_foreign_key "baskets", "orders"
+  add_foreign_key "baskets", "products"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "favourites", "vans"
+  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "vans"
+  add_foreign_key "products", "users"
+  add_foreign_key "reviews", "orders"
+  add_foreign_key "stores", "products"
+  add_foreign_key "stores", "vans"
+  add_foreign_key "vans", "users"
 end
