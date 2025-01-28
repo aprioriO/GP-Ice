@@ -7,10 +7,10 @@
         <% end %>
       </div>
       <div id="nav-links">
-        <%= link_to "Home", vans_path %>
-        <%= link_to "Store", _path %>
-        <%= link_to "Favourites", favourites_path %>
-        <%= link_to "Profile", profile_path %>
+        <%= link_to "Home", root_path  %>
+        <%= link_to "Store", vans_path %>
+        <%= link_to "Cart", "#" %>
+        <%= link_to "Profile", "#" %>
         <% if current_user.present? %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
         <% else %>
