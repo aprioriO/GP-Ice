@@ -4,5 +4,5 @@ class Inventory < ApplicationRecord
 
 
   validates :product_id, :van_id, presence: true
-  validates :quantity_avaliable, :price, presence: true, numericality: { greater_than: 0 }
+  validates :quantity_available, :price, presence: true, numericality: { greater_than: 0 }
 end

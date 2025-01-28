@@ -1,6 +1,5 @@
-require(:faker)
+require 'faker'
 # Clear existing records
-puts "Clearing existing records..."
 Review.destroy_all
 Order.destroy_all
 Favourite.destroy_all
@@ -8,9 +7,7 @@ Inventory.destroy_all
 Product.destroy_all
 Van.destroy_all
 User.destroy_all
-
 # Create Users
-puts "Creating Users"
 users = []
 5.times do |i|
   users << User.create!(
