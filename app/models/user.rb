@@ -7,7 +7,11 @@ class User < ApplicationRecord
   has_many :vans
   has_many :orders
   has_many :favourites
-  # has_many :favourites_vans
+  has_many :favourite_vans, through: :favourites, source: :van
 
-  validates :first_name, :last_name, :email, :password, presence: true
+
+  validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
+
+  validates :email, :password, presence: true
 end
