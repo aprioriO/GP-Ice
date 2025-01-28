@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-image">
+  <div class="container-main">
+    <div id="homescreen-banner"></div>
+      <h1><strong>G.P.Ice</strong></h1>
+      <p><em>You can never find the Ice-cream van when you really want it</em></p>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <%= link_to "Search", vans_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+        </form>
+    <img src="logo.png" alt="G.P. Ice Logo" class="logo">
+    <div class="hero">
+        <img src="ice-cream-cone.jpg" alt="Ice Cream Cone" class="hero-image">
+        <div class="search-bar">
+            <input type="text" placeholder="Enter your postcode">
+            <button>Search</button>
+        </div>
+        <div class="ratings">
+            <div class="star-item"><img src="cone-icon.png" alt="Cone"> <span>★★★★☆</span></div>
+            <div class="star-item"><img src="cone-icon.png" alt="Cone"> <span>★★★★☆</span></div>
+            <div class="star-item"><img src="cone-icon.png" alt="Cone"> <span>★★★★☆</span></div>
+        </div>
+    </div>
+  </div>
+</div>
