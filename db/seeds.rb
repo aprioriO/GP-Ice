@@ -1,16 +1,5 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 # require 'cloudinary'
 # require "open-uri"
-
 require 'faker'
 
 # Clear existing records
@@ -35,6 +24,7 @@ users = []
 end
 puts "Users created successfully"
 
+
 # Create Unique Vans
 puts "Creating Vans"
 vans = []
@@ -47,12 +37,12 @@ users.each do |user|
   )
 end
 
+
 puts "Vans created successfully"
 
 # Create Favourites
 puts "Creating Favourites"
 favourites = []
-
 5.times do |i|
   favourites << Favourite.create!(
     user_id: users.sample.id,
@@ -60,12 +50,12 @@ favourites = []
   )
 end
 
+
 puts "Favourites created successfully"
 
 # Create Products
 puts "Creating Products"
 products = []
-
 # Custom array of ice cream descriptions
 ice_cream_descriptions = [
   "A classic and creamy treat that brings back childhood memories.",
@@ -74,6 +64,7 @@ ice_cream_descriptions = [
   "Minty fresh with chunks of chocolate for a delightful crunch.",
   "Decadent and filled with chunks of chewy cookie dough."
 ]
+
 
 ice_cream_flavors = ["Vanilla", "Chocolate", "Strawberry", "Mint Chocolate Chip", "Cookie Dough"]
 
@@ -85,6 +76,7 @@ ice_cream_flavors.each_with_index do |flavor, index|
     photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['icecream'])
   )
 end
+
 
 
 puts "Products created successfully"
@@ -105,13 +97,11 @@ vans.each do |van|
   end
 end
 
-
 puts "Inventories created successfully"
 
 # Create Orders
 puts "Creating Orders"
 orders = []
-
 users.each do |user|
   vans.each do |van|
     orders << Order.create!(
@@ -125,11 +115,9 @@ end
 
 puts "Orders created successfully"
 
-
 # Create Order Products
 puts "Creating Order Products"
 order_products = []
-
 orders.each do |order|
   products.each do |product|
     order_products << OrderProduct.create!(
@@ -141,5 +129,4 @@ orders.each do |order|
 end
 
 puts "Order Products created successfully"
-
 puts "Seeding completed successfully!"

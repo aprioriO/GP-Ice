@@ -1,0 +1,38 @@
+<%= link_to "Back", vans_path %>
+
+<div>
+  <%= image_tag(@user.photo) if @user.photo.present? %>
+  <h1><%= @van.name %></h1>
+  <p><%= @van.location %></p>
+</div>
+
+<h2>Products Available in this Van:</h2>
+<% if @inventories.empty? %>
+  <p>No products available in this van.</p>
+<% else %>
+  <ul>
+    <% @inventories.each do |inventory| %>
+      <li>
+        <div class="my-container">
+          <div class="product-card">
+            <div class="product-info">
+              <h3><strong><%= inventory.product.name %></strong></h3>
+              <p><%= inventory.product.description %></p>
+              <p><strong><%= number_to_currency(inventory.price) %></strong></p>
+              <%= link_to "Add to basket",  vans_path, class: "btn btn-primary" %>
+              <span>Quantity Available: <%= inventory.quantity_available %></span>
+            </div>
+
+            <%# <div class="product-image"> %>
+              <% if inventory.product.photo.present? %>
+                <%= image_tag inventory.product.photo, alt: inventory.product.name %>
+              <% else %>
+                <%= image_tag 'default_product_image.png', alt: 'Default Image' %>
+              <% end %>
+            <%# </div> %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
