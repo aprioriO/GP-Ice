@@ -1,2 +1,54 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="landing-page">
+  <div class="hero-section">
+
+    <h1>Find. Track. Enjoy. Ice Cream Has Never Been Closer!</h1>
+    <div class="search">
+      <div class="search-bar">
+        <input type="text" placeholder="Enter your postcode">
+        <%= link_to "Search", search_path  %>
+      </div>
+    </div>
+
+    <div class="product-list">
+      <div class="product">
+
+        <img src="<%= asset_path('cone-icon.png') %>" alt="Cone">
+
+        <div class="rating">
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+        </div>
+      </div>
+
+      <div class="product">
+
+        <img src="<%= asset_path('cone-icon.png') %>" alt="Ice Cream Cone">
+
+        <div class="rating">
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+        </div>
+      </div>
+
+      <div class="product">
+
+        <img src="<%= asset_path('cone-icon.png') %>" alt="Ice Cream Cone">
+
+        <div class="rating">
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
