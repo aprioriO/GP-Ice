@@ -19,10 +19,9 @@
               <h3><strong><%= inventory.product.name %></strong></h3>
               <p><%= inventory.product.description %></p>
               <p><strong><%= number_to_currency(inventory.price) %></strong></p>
-              <%= link_to "Add to basket",  van_product_path(@van, @inventory_product), class: "btn btn-primary" %>
+              <%= link_to "Add to basket", van_product_path(@van, inventory.product), class: "btn btn-primary" %>
               <span>Quantity Available: <%= inventory.quantity_available %></span>
             </div>
-
             <%# <div class="product-image"> %>
               <% if inventory.product.photo.present? %>
                 <%= image_tag inventory.product.photo, alt: inventory.product.name %>
