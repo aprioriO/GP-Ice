@@ -1,0 +1,20 @@
+<h1>Create a New Order</h1>
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+  <%= f.submit "Create Order", class: "btn btn-primary" %>
+<% end %>
+
+<h2>Available Products</h2>
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= product.name %> - $<%= product.inventories.first.price if product.inventories.any? %>
+      <%= form_with url: order_products_path(@order), method: :post do |f| %>
+        <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.submit "Add to Order", class: "btn btn-success" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Orders List", orders_path, class: "btn btn-secondary" %>

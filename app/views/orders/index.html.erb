@@ -1,0 +1,12 @@
+<h2>My Orders</h2>
+
+<ul>
+  <% @orders.each do |order| %>
+    <li>
+      <%= link_to "Order ##{order.id} - #{order.confirmed_status ? 'Checked Out' : 'Pending'}", order_path(order) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Go to Homepage", root_path, class: "btn btn-primary" %>
+<%= link_to "Add a New Order", new_order_path, class: "btn btn-success" %>
