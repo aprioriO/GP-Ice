@@ -3,21 +3,23 @@
 <%= @product %>
 
 <h1>Please select the quantity of products you want to buy</h1>
-<%= image_tag(@photo) if @product.photo.present? %>
+<%= image_tag(@product.photo) if @product.photo.present? %>
 <p>
   <strong>Product:</strong>
-  <%= @name %>
+  <%= @product.name %>
 </p>
 <p>
   <strong>Description:</strong>
-  <%= @description %>
+  <%= @product.description %>
 </p>
 <p>
   <strong>Price:</strong>
-  <%= @price %>
+  <%= @inventory.price %>
 </p>
-<%= form_for @product_to_buy do |f| %>
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity_ordered %>
+
+<%= form_for [@van, @order] do |f| %>
+  <%= label_tag :quantity %>
+  <%= number_field_tag :quantity_ordered %>
+  <%= hidden_field_tag :product_id, @product.id %>
   <%= f.submit %>
 <% end %>

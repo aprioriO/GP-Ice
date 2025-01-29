@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_van, only: [:create]
 
   def index
     @orders = Order.where(user_id: current_user.id)
@@ -11,9 +12,24 @@ class OrdersController < ApplicationController
     @products = Product.all
   end
 
+  # def create
+  #   @order = Order.new(order_params)
+  #   if @order.save
+  #     redirect_to @order, notice: "Order created successfully!"
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
+
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
+    @order.user = current_user
+    @order.van = @van
+    @order.confirmed_status = false
+    @order.paid_status = false
+    @product = Product.find(params[:product_id])
     if @order.save
+      OrderProduct.create(order: @order, product: @product, quantity_ordered: params[:quantity_ordered])
       redirect_to @order, notice: "Order created successfully!"
     else
       render :new, status: :unprocessable_entity
@@ -40,7 +56,7 @@ class OrdersController < ApplicationController
     redirect_to van_orders_path(@order.van), notice: 'Order deleted.'
   end
 
-  
+
   def checkout
     @order = Order.find(params[:order_id])
 
@@ -53,9 +69,16 @@ class OrdersController < ApplicationController
   end
 
   private
-  
-   def order_params
-    params.require(:order).permit(:confirmed_status)
-   end
+
+  def set_van
+    @van = Van.find_by(id: params[:van_id])
+    unless @van
+      redirect_to root_path, alert: 'Van not found'
+    end
+  end
+
+  #  def order_params
+  #   params.require(:order).permit(:confirmed_status)
+  #  end
 
 end

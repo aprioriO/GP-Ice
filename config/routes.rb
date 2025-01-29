@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     get "tracking" => "vans#tracking", as: :tracking
     get "orders" => "vans#orders", as: :orders
     get "products/:id" => "products#show", as: :product
-    resources :orders, only: %i[show update destroy]
+    patch "products/:id" => "products#update"
+    resources :orders, only: %i[show create update destroy]
     resources :inventories
     post "favourite" => "favourites#create", as: :favourite
   end
