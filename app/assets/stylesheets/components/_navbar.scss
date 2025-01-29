@@ -2,22 +2,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $white-color;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 
-  .logo img {
-    height: 50px;
+  .logo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    img {
+      height: 100px;
+    }
+
+    h1 {
+      color: $white-color;
+      font-size: 40px;
+      font-weight: 500;
+    }
   }
 
-  ul {
+  .nav-links ul {
     display: flex;
     list-style: none;
-    color: $primary-color;
-    text-decoration: none;
-    font-weight: 500;
 
-    &:hover {
-      color: darken($primary-color, 10%);
+    li {
+      margin: 0 10px;
     }
+
+    a {
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: 500;
+      color: $white-color;
+
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
+    }
+
   }
 }
 
