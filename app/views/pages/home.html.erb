@@ -1,24 +1,76 @@
-<div class="home-image">
-  <div class="container-main">
-    <div id="homescreen-banner"></div>
-      <h1><strong>G.P.Ice</strong></h1>
-      <p><em>You can never find the Ice-cream van when you really want it</em></p>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <%= link_to "Search", vans_path, class: "btn btn-outline-success my-2 my-sm-0" %>
-        </form>
-    <img src="logo.png" alt="G.P. Ice Logo" class="logo">
-    <div class="hero">
-        <img src="https://thumbs.dreamstime.com/z/various-varieties-ice-cream-cones-mint-blueberry-strawberry-pistachio-cherry-chocolate-isolated-white-background-158155276.jpg?ct=jpeg" alt="Ice Cream Cone" class="hero-image">
-        <div class="search-bar">
-            <input type="text" placeholder="Enter your postcode">
-            <button>Search</button>
+<div class="landing-page">
+  <header class="header">
+
+    <nav class="navbar">
+      <div class="logo">
+        <%= link_to root_path do %>
+          <%= image_tag("logo.png") %>
+        <% end %>
+      </div>
+      <ul>
+        <li><%= link_to "Home", root_path  %></li>
+        <li><%= link_to "Store", vans_path %></li>
+        <li><%= link_to "Cart", "#" %></li>
+        <li><%= link_to "Profile", edit_user_registration_path %></li>
+        <li><% if current_user.present? %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %>
+        <% end %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <div class="hero-section">
+    <h1>Find. Track. Enjoy. Ice Cream Has Never Been Closer!</h1>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Enter your postcode">
+      <button>Search</button>
+    </div>
+
+    <div class="product-list">
+      <div class="product">
+
+        <img src="<%= asset_path('cone-icon.jpg') %>" alt="Cone">
+
+        <div class="rating">
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
         </div>
-        <div class="ratings">
-            <div class="star-item"><img src="cone-icon.jpg" alt="Cone"> <span>★★★★☆</span></div>
-            <div class="star-item"><img src="cone-icon.jpg" alt="Cone"> <span>★★★★☆</span></div>
-            <div class="star-item"><img src="cone-icon.jpg" alt="Cone"> <span>★★★★☆</span></div>
+      </div>
+
+      <div class="product">
+
+        <img src="<%= asset_path('cone-icon.jpg') %>" alt="Ice Cream Cone">
+
+        <div class="rating">
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
         </div>
+      </div>
+
+      <div class="product">
+
+        <img src="<%= asset_path('cone-icon.jpg') %>" alt="Ice Cream Cone">
+
+        <div class="rating">
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+          <span>⭐</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
