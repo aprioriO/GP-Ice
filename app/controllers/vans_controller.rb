@@ -26,5 +26,3 @@ private
 def van_find
   @van = Van.find(params[:id])
 end
-
-end
