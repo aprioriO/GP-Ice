@@ -1,5 +1,6 @@
 class VansController < ApplicationController
   before_action :van_find, only: [:show]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
     @vans = Van.all
@@ -17,4 +18,6 @@ private
 
 def van_find
   @van = Van.find(params[:id])
+end
+
 end
