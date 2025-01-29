@@ -9,9 +9,8 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :favourite_vans, through: :favourites, source: :van
 
-
-  # validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
-  # validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
 
   validates :email, :password, presence: true
 end
