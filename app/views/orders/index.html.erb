@@ -6,19 +6,17 @@
     <p>Confirmed</p>
     <p>Paid</p>
     <p>Created At</p>
-    
+    <div class="select-van mb-3 mx-3">
+      <%= form_with url: orders_path, method: :get, data: { turbo_frame: "orders_list" } do |form| %>
+        <%= form.select :van_id, options_from_collection_for_select(@vans, :id, :name, params[:van_id]), { prompt: "Select a Van" }, { onchange: "this.form.submit();" } %>
+      <% end %>
+    </div>
   </div>
-  <% @orders.each do |order| %>
-    <div class="card-details">
-      <p><%= order.id %></p>
-      <p><%= order.van_id %></p>
-      <p><%= order.confirmed_status %></p>
-      <p><%= order.paid_status %></p>
-      <p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
 
+  <%= turbo_frame_tag "orders_list" do %>
+  <%= render partial: "orders_list", locals: { orders: @orders } %>
   <% end %>
 </div>
 
 <%= link_to "Go to Homepage", root_path, class: "btn btn-primary" %>
 <%= link_to "Add a New Order", new_order_path, class: "btn btn-success" %>
-
