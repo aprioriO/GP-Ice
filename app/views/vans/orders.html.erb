@@ -1,0 +1,37 @@
+<div class="container">
+<h3>Orders for <%= @van.name %></h3>
+<div class="card">
+  <div class="card-header">
+    <p>Order ID</p>
+    <p>User</p>
+    <p>Confirmed</p>
+    <p>Paid</p>
+    <p>Created At</p>
+    <p>Actions</p>
+  </div>
+  <% @orders.each do |order| %>
+    <div class="card-details">
+      <p><%= order.id %></p>
+      <p><%= order.user_id %></p>
+      <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+      <p><%= order.paid_status %></p>
+      <p><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S UTC") %></p>
+      <div class="actions">
+        <div>
+          <% unless order.confirmed_status %>
+          <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-confirm' %>
+        <% end %>
+        <div class="check-action">
+        <% if order.confirmed_status == true %>
+        <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+        <% end %>
+        </div>
+        </div>
+        <div>
+        <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-cancel' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
