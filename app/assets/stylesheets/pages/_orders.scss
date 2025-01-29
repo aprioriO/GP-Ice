@@ -58,15 +58,15 @@ h3 {
   color: white;
 }
 
-.fa-checkmark {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.fa-cross {
+  color: #f44336;
+  font-size: 1.25em;
 }
 
 .fa-checkmark .fa-check {
   color: #63E6BE;
   font-size: 1.25em;
+
 }
 .check-action {
   display: flex;

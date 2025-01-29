@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
 
+  def index
+    @orders = Order.where(user_id: current_user.id)
+  end
+
   def show
     @order = Order.find(params[:id])
 
@@ -18,7 +22,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to van_orders_path(@order.van), notice: 'Order deleted.'
-    
+
   end
 
 

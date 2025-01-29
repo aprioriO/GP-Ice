@@ -14,8 +14,12 @@
       <p><%= order.id %></p>
       <p><%= order.user_id %></p>
       <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-      <p><%= order.paid_status %></p>
-      <p><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S UTC") %></p>
+        <% if order.paid_status  == true %>
+        <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+        <% else %>
+        <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+        <% end %>
+      <p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
       <div class="actions">
         <div>
           <% unless order.confirmed_status %>

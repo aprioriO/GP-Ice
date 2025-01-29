@@ -1,0 +1,20 @@
+<h1>Orders</h1>
+<div class="card">
+  <div class="card-header">
+    <p>Order ID</p>
+    <p>Van ID</p>
+    <p>Confirmed</p>
+    <p>Paid</p>
+    <p>Created At</p>
+    
+  </div>
+  <% @orders.each do |order| %>
+    <div class="card-details">
+      <p><%= order.id %></p>
+      <p><%= order.van_id %></p>
+      <p><%= order.confirmed_status %></p>
+      <p><%= order.paid_status %></p>
+      <p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+
+  <% end %>
+</div>
