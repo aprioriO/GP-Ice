@@ -1,4 +1,7 @@
+# require 'cloudinary'
+# require "open-uri"
 require 'faker'
+
 # Clear existing records
 Review.destroy_all
 Order.destroy_all
@@ -7,6 +10,7 @@ Inventory.destroy_all
 Product.destroy_all
 Van.destroy_all
 User.destroy_all
+
 # Create Users
 users = []
 5.times do |i|
@@ -19,9 +23,12 @@ users = []
   )
 end
 puts "Users created successfully"
+
+
 # Create Unique Vans
 puts "Creating Vans"
 vans = []
+
 users.each do |user|
   vans << Van.create!(
     name: "#{Faker::Food.ingredient} #{Faker::Name.last_name}'s Ice Cream Van",
@@ -29,7 +36,10 @@ users.each do |user|
     user_id: user.id
   )
 end
+
+
 puts "Vans created successfully"
+
 # Create Favourites
 puts "Creating Favourites"
 favourites = []
@@ -39,7 +49,10 @@ favourites = []
     van_id: vans.sample.id
   )
 end
+
+
 puts "Favourites created successfully"
+
 # Create Products
 puts "Creating Products"
 products = []
@@ -51,7 +64,10 @@ ice_cream_descriptions = [
   "Minty fresh with chunks of chocolate for a delightful crunch.",
   "Decadent and filled with chunks of chewy cookie dough."
 ]
+
+
 ice_cream_flavors = ["Vanilla", "Chocolate", "Strawberry", "Mint Chocolate Chip", "Cookie Dough"]
+
 # Create Products with specific descriptions
 ice_cream_flavors.each_with_index do |flavor, index|
   products << Product.create!(
@@ -60,10 +76,16 @@ ice_cream_flavors.each_with_index do |flavor, index|
     photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['icecream'])
   )
 end
+
+
+
 puts "Products created successfully"
+
+
 # Create Inventories
 puts "Creating Inventories"
 inventories = []
+
 vans.each do |van|
   products.each do |product|
     inventories << Inventory.create!(
@@ -74,7 +96,9 @@ vans.each do |van|
     )
   end
 end
+
 puts "Inventories created successfully"
+
 # Create Orders
 puts "Creating Orders"
 orders = []
@@ -88,7 +112,9 @@ users.each do |user|
     )
   end
 end
+
 puts "Orders created successfully"
+
 # Create Order Products
 puts "Creating Order Products"
 order_products = []
@@ -101,5 +127,6 @@ orders.each do |order|
     )
   end
 end
+
 puts "Order Products created successfully"
 puts "Seeding completed successfully!"

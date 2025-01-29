@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-
   end
 
   def search
@@ -11,4 +10,5 @@ class PagesController < ApplicationController
     flash[:notice] = "You searched for #{@postcode}" unless @postcode.blank?
     render :index
   end
+  
 end

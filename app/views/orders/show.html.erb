@@ -1,3 +1,11 @@
+<h1>Order Details</h1>
+
+<p><strong>Order ID:</strong> <%= @order.id %></p>
+<p><strong>User Email:</strong> <%= @order.user.email %></p>
+<p><strong>Confirmed Status:</strong> <%= @order.confirmed_status %></p>
+<p><strong>Paid Status:</strong> <%= @order.paid_status %></p>
+
+
 <h2>Order #<%= @order.id %></h2>
 <p>Status: <%= @order.confirmed_status ? "Confirmed" : "Pending" %></p>
 
@@ -27,4 +35,5 @@
   <%= f.submit "Add to Order", class: "btn btn-primary" %>
 <% end %>
 
+<%= link_to 'Back to Orders', van_orders_path(@order.van) %>
 <%= link_to "Back to Orders List", orders_path, class: "btn btn-secondary" %>
