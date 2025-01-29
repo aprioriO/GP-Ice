@@ -22,7 +22,7 @@
 </ul>
 
 <% unless @order.confirmed_status %>
-  <%= link_to "Proceed to Checkout", checkout_order_path(@order), class: "btn btn-success" %>
+  <%= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-success" %>
 <% end %>
 
 <h3>Add a Product</h3>

@@ -13,6 +13,7 @@
   </div>
 </div>
 
+
 <div class="my-container">
   <% if @inventories.empty? %>
     <p>No products available in this van.</p>
@@ -26,7 +27,7 @@
                 <hr class="product-line">
                 <p><%= inventory.product.description %></p>
                 <p><strong><%= number_to_currency(inventory.price) %></strong></p>
-                <%= link_to "Add to basket",  vans_path, class: "btn-main" %>
+                <%= link_to "Add to basket", van_product_path(@van, inventory.product), class: "btn-main" %>
                 <span>Quantity Available: <%= inventory.quantity_available %></span>
               </div>
 
