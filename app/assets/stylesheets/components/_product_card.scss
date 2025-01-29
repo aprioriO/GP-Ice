@@ -1,9 +1,18 @@
+.my-container {
+  margin: 10px auto;
+  width: 75%;
+}
+
 .product-card {
-  background-color: aqua;
+  background-color: rgb(255, 255, 255);
   margin: 25px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
+  border-radius: 20px;
+  max-width: 1000px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
 
   img {
     width: 30%;
@@ -12,17 +21,26 @@
 }
 
 .product-info {
+  align-content: center;
   width: 70%;
-  padding: 10px;
+  padding: 20px;
+
+  h3 {
+    font-family: "Ultra", serif;
+    color: rgb(0, 0, 0);
+    font-weight: 100;
+  }
+
+  p {
+    font-family: "Nunito", sans-serif;
+  }
 }
 
 .product-image {
-  width: 30%;
-
-  img {
-    width: 500px;
-    height: 500px;
-  }
+  width: 100vh;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 0 20px 20px 0;
 }
 
 ul {
@@ -31,7 +49,76 @@ ul {
   padding-left: 0px;
 }
 
-.my-container {
+
+.van-show {
+  display: flex;
+  margin: 25px auto;
+  width: 75%;
+  align-items: center;
+  justify-items: center;
+  gap: 20px;
+  max-width: 1000px;
+}
+
+.van-image {
+  width: 200px;
+  img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.van-info {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-family: "Ultra", serif;
+    color: rgb(255, 255, 255);
+    font-weight: 100;
+  }
+
+  p {
+    font-family: "Nunito", sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+  }
+}
+
+.van-container {
   margin: 10px auto;
-  width: 600px;
+  width: 75%;
+}
+
+
+.product-line {
+  color: $pink;
+  border-bottom: 5px dotted $pink;
+}
+
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .van-show {
+    flex-direction: column;
+  }
+
+  .van-info {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .product-card {
+    flex-direction: column;
+  }
+
+  .product-info {
+    width: 100%;
+  }
 }

@@ -1,8 +1,19 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
 
+
   def index
     @orders = Order.where(user_id: current_user.id)
+    @vans = @orders.map(&:van).uniq
+    if params[:van_id].present?
+      @selected_van = Van.find(params[:van_id])
+      @orders = @orders.where(van_id: @selected_van.id)
+    end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def new
