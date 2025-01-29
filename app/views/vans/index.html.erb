@@ -1,0 +1,7 @@
+<h1>All VANS - INDEX PAGE</h1>
+
+<ul>
+  <% @vans.each do |van| %>
+    <li><%= link_to van.name, van_path(van) %></li>
+  <% end %>
+</ul>
