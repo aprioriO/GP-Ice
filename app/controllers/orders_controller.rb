@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
 #       params[:product_ids].each { |product_id| @order.order_products.create(product_id: product_id) }
 
     end
-    redirect_to checkout_order_path(@order)
+    redirect_to order_checkout_path(@order)
   end
 
   def show
