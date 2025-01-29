@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   before_action :authenticate_user!
 
 
@@ -23,18 +22,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    if @order.save
-      redirect_to @order, notice: "Order created successfully!"
-    else
-      render :new, status: :unprocessable_entity
+    @order = Order.create(user: current_user, confirmed_status: false, paid_status: false)
+    if params[:product_ids].present?
+      params[:product_ids].each { |product_id| @order.order_products.create(product_id: product_id) }
     end
+    redirect_to checkout_order_path(@order)
   end
 
   def show
     @order = Order.find(params[:id])
   end
-
 
   def update
     @order = Order.find(params[:id])
@@ -51,7 +48,6 @@ class OrdersController < ApplicationController
     redirect_to van_orders_path(@order.van), notice: 'Order deleted.'
   end
 
-
   def checkout
     @order = Order.find(params[:order_id])
 
@@ -65,8 +61,7 @@ class OrdersController < ApplicationController
 
   private
 
-   def order_params
+  def order_params
     params.require(:order).permit(:confirmed_status)
-   end
-
+  end
 end
