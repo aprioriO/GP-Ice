@@ -1,0 +1,16 @@
+<h1>Checkout</h1>
+<p>Order #<%= @order.id %></p>
+
+<h2>Order Summary</h2>
+<ul>
+  <% @order.order_products.each do |order_product| %>
+    <li>
+      <%= order_product.product.name %> - $<%= order_product.product.inventories.first.price if order_product.product.inventories.any? %>
+    </li>
+  <% end %>
+</ul>
+
+<p><strong>Total Price:</strong> $<%= @order.order_products.sum { |op| op.product.inventories.first.price if op.product.inventories.any? } %></p>
+
+<%= link_to "Back to Orders", orders_path, class: "btn btn-secondary" %>
+<%= link_to "Go to Homepage", root_path, class: "btn btn-primary" %>

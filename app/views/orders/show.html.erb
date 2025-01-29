@@ -1,0 +1,30 @@
+<h2>Order #<%= @order.id %></h2>
+<p>Status: <%= @order.confirmed_status ? "Confirmed" : "Pending" %></p>
+
+<h3>Products in this order:</h3>
+<ul>
+  <% @order.order_products.each do |order_product| %>
+    <li>
+      <%= order_product.product.name %> -
+      $<%= order_product.product.inventories.first.price if order_product.product.inventories.any? %>
+      <%= button_to "Remove", order_order_product_path(@order, order_product),
+                    method: :delete, class: "btn btn-danger btn-sm" %>
+    </li>
+  <% end %>
+</ul>
+
+<% unless @order.confirmed_status %>
+  <%= link_to "Proceed to Checkout", checkout_order_path(@order), class: "btn btn-success" %>
+<% end %>
+
+<h3>Add a Product</h3>
+<%= form_with model: OrderProduct.new, url: order_order_products_path(@order), method: :post do |f| %>
+  <div class="form-group">
+    <%= f.label :product_id, "Select a Product" %>
+    <%= f.collection_select :product_id, Product.all, :id, :name, prompt: "Choose a product", class: "form-control" %>
+  </div>
+
+  <%= f.submit "Add to Order", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back to Orders List", orders_path, class: "btn btn-secondary" %>
