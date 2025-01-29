@@ -1,0 +1,19 @@
+<h1>Please select the quantaty of products you want to buy</h1>
+  <img src=" <%@product_to_buy.photo%> " alt="">
+  <p>
+    <strong>Product:</strong>
+    <%= @product_to_buy.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @product_to_buy.description %>
+  <p>
+    <strong>Price:</strong>
+    <%= @product_to_buy.price %>
+  </p>
+  <%= form_for @product_to_buy do |f| %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity_ordered %>
+    <%= f.submit %>
+  <% end %>
