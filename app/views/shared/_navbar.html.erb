@@ -1,22 +1,41 @@
 <div class="navbar-container">
     <div class="logo">
       <%= link_to root_path do %>
-        <%= image_tag("logo.png") %>
+        <%= image_tag("GP ICE logo 2.png") %>
       <% end %>
-      <h1>G.P.Ice</h1>
     </div>
     <div class = "nav-links">
-      <ul>
-        <li><%= link_to "Home", root_path  %></li>
-        <li><%= link_to "Store", vans_path %></li>
-        <li><%= link_to "Cart", "#" %></li>
-        <li><%= link_to "Profile", edit_user_registration_path %></li>
-        <li><% if current_user.present? %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to root_path, class: "nav-link" do %>
+        <i class="fa-solid fa-house"></i>
+        <span class="nav-text">Home</span>
+      <% end %>
+
+
+        <%= link_to  vans_path, class: "nav-link" do %>
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Store</span>
         <% end %>
-        </li>
-      </ul>
+
+        <%= link_to "#", class: "nav-link"  do %>
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="nav-text">Cart</span>
+        <% end %>
+
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fa-solid fa-user"></i>
+          <span class="nav-text">Profile</span>
+        <% end %>
+
+        <% if current_user.present? %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+          <i class="fa-solid fa-x"></i>
+          <span class="nav-text">Sign Out</span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "nav-link"  do %>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span class="nav-text">Sign In</span>
+          <% end %>
+        <% end %>
     </div>
   </div>

@@ -1,10 +1,20 @@
 class OrdersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_van, only: [:create]
 
+
   def index
     @orders = Order.where(user_id: current_user.id)
+    @vans = @orders.map(&:van).uniq
+    if params[:van_id].present?
+      @selected_van = Van.find(params[:van_id])
+      @orders = @orders.where(van_id: @selected_van.id)
+    end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def new
@@ -33,13 +43,18 @@ class OrdersController < ApplicationController
       redirect_to @order, notice: "Order created successfully!"
     else
       render :new, status: :unprocessable_entity
+
+#     @order = Order.create(user: current_user, confirmed_status: false, paid_status: false)
+#     if params[:product_ids].present?
+#       params[:product_ids].each { |product_id| @order.order_products.create(product_id: product_id) }
+
     end
+    redirect_to checkout_order_path(@order)
   end
 
   def show
     @order = Order.find(params[:id])
   end
-
 
   def update
     @order = Order.find(params[:id])
@@ -81,4 +96,8 @@ class OrdersController < ApplicationController
   #   params.require(:order).permit(:confirmed_status)
   #  end
 
+
+  def order_params
+    params.require(:order).permit(:confirmed_status)
+  end
 end
