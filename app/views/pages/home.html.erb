@@ -1,12 +1,12 @@
 <div class="landing-page">
-  <header class="header">
 
-    <nav class="navbar">
-      <div class="logo">
-        <%= link_to root_path do %>
-          <%= image_tag("logo.png") %>
-        <% end %>
-      </div>
+  <div class="navbar-container">
+    <div class="logo">
+      <%= link_to root_path do %>
+        <%= image_tag("logo.png") %>
+      <% end %>
+    </div>
+    <div class = "nav-links">
       <ul>
         <li><%= link_to "Home", root_path  %></li>
         <li><%= link_to "Store", vans_path %></li>
@@ -19,8 +19,8 @@
         <% end %>
         </li>
       </ul>
-    </nav>
-  </header>
+    </div>
+  </div>
 
 
   <div class="hero-section">

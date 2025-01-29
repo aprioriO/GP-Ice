@@ -1,0 +1,122 @@
+.landing-page {
+  background: image-url("GPIce_background.jpg") no-repeat center fixed;
+  background-size: cover;
+  margin: 0; 
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  max-width: 1800px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+}
+
+.navbar-container  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white-color;
+
+  .logo img {
+    height: 50px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 0;
+  padding: 0 20px;
+}
+
+$gradient-start: #ff92b4;
+$gradient-end: #ff6b6b;
+$border-color: #ccc;
+$rating-color: #ffcc00;
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  // background: linear-gradient(to bottom, $gradient-start, $gradient-end);
+
+  h1 {
+    border: 1px solid $border-color;
+    margin-bottom: 2rem;
+  }
+
+    // background: $primary-color;
+  justify-content: center;
+  margin-bottom: 2rem;
+
+  input {
+    width: 300px;
+    padding: 0.5rem;
+    border: 1px solid $border-color;
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+  button {
+    background: $primary-color;
+    padding: 0.5rem 1rem;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background: #ff3c3c;
+    }
+  }
+
+  .product-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    .product {
+      background: $white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      img {
+        height: 170px;
+        width: 170px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 1rem;
+      }
+
+      .rating {
+        display: flex;
+        justify-content: center;
+        gap: 0.2rem;
+
+        span {
+          font-size: 1.2rem;
+          color: #ffcc00;
+        }
+          color: $rating-color;
+    }
+  }
+}
+}
