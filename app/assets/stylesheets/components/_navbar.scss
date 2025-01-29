@@ -3,54 +3,73 @@
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-  // background-color: rgb(0, 255, 170);
-  // position: fixed;
-  top: 0;
   width: 100%;
-  z-index: 1000;
-
-  .logo {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-
-    img {
-      height: 100px;
-    }
-
-    h1 {
-      color: $white-color;
-      font-size: 40px;
-      font-weight: 500;
-    }
-  }
-
-  .nav-links ul {
-    display: flex;
-    list-style: none;
-
-    li {
-      margin: 0 10px;
-    }
-
-    a {
-      text-decoration: none;
-      font-size: 30px;
-      font-weight: 500;
-      color: $white-color;
-
-      &:hover {
-        color: darken($primary-color, 10%);
-      }
-    }
-
-  }
 }
 
 .nav-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 0;
-  padding: 0 20px;
+  gap: 20px;
+  padding-right: 20px;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 40px;
+    font-family: "Nunito", serif;
+    font-weight: bold;
+    transition: 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+      font-size: 50px;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  img {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .logo {
+
+    img {
+      height: 100px;
+      width: 100px;
+    }
+  }
+}
+
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .nav-links {
+
+    a {
+      font-size: 20px;
+
+      &:hover {
+        color: $primary-color;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.nav-text {
+  display: none;
+  margin-left: 5px;
+}
+
+.nav-link:hover .nav-text {
+  display: inline;
 }
