@@ -22,15 +22,6 @@ class OrdersController < ApplicationController
     @products = Product.all
   end
 
-  # def create
-  #   @order = Order.new(order_params)
-  #   if @order.save
-  #     redirect_to @order, notice: "Order created successfully!"
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
-
   def create
     @order = Order.new
     @order.user = current_user
@@ -43,13 +34,7 @@ class OrdersController < ApplicationController
       redirect_to @order, notice: "Order created successfully!"
     else
       render :new, status: :unprocessable_entity
-
-#     @order = Order.create(user: current_user, confirmed_status: false, paid_status: false)
-#     if params[:product_ids].present?
-#       params[:product_ids].each { |product_id| @order.order_products.create(product_id: product_id) }
-
     end
-    redirect_to order_checkout_path(@order)
   end
 
   def show
@@ -91,11 +76,6 @@ class OrdersController < ApplicationController
       redirect_to root_path, alert: 'Van not found'
     end
   end
-
-  #  def order_params
-  #   params.require(:order).permit(:confirmed_status)
-  #  end
-
 
   def order_params
     params.require(:order).permit(:confirmed_status)
