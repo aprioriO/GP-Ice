@@ -1,7 +1,7 @@
 <h1>Add product to the store</h1>
 
 <h3>Add Products to the Store</h3>
-<%= form_with url: van_inventories_path, method: :post do |f| %>
+<%= form_with url: van_inventories_path(@inventory&.van), method: :post do |f| %>
   <% 5.times do |i| %>
     <div class="form-group">
       <%= label_tag "product_#{i}", "Select Product ##{i + 1}" %>
