@@ -25,6 +25,8 @@ class InventoriesController < ApplicationController
     @van = Van.find(params[:van_id])
     @product = Product.find(params[product_id: :product_id])
     @inventory = @van.inventories.find_or_initialize_by(product: @product)
+    @inventory.quantity_avilable = params[:quantity_available]
+    @inventory.price = params[:price]
     # @inventory.user = current_user
     @inventory.van = @van
     if @inventory.save
