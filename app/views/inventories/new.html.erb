@@ -2,14 +2,18 @@
 
 <h3>Add Products to the Store</h3>
 <%= form_with url: van_inventories_path(@inventory&.van), method: :post do |f| %>
-  <% 5.times do |i| %>
+  <% 3.times do |i| %>
     <div class="form-group">
       <%= label_tag "product_#{i}", "Select Product ##{i + 1}" %>
       <%= select_tag "product_ids[]", options_from_collection_for_select(@products, :id, :name), prompt: "Choose a product", class: "form-control" %>
+      <%= label_tag "quantity_available:", "Add quantity of Product ##{i + 1}" %>
+      <%= text_field_tag "quantity_available[]", nil, placeholder: "Add quantity of product available", class: "form-control" %>
+      <%= label_tag "price:", "Add price of Product ##{i + 1}" %>
+      <%= text_field_tag "price[]", nil, placeholder: "Add price of the product", class: "form-control" %>
     </div>
   <% end %>
 
   <%= f.submit "Add product", class: "btn btn-primary mt-3" %>
 <% end %>
 
-<%= link_to "Back to Inventories List", van_inventories_path(@inventory.van), class: "btn btn-secondary mt-3" %>
+<%= link_to "Back to Inventories List", van_inventories_path(@inventory&.van), class: "btn btn-secondary mt-3" %>
