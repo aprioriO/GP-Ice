@@ -56,5 +56,4 @@ class InventoriesController < ApplicationController
     @inventory.user = current_user
     @inventory.van = @van
   end
-
 end
