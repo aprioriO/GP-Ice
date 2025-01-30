@@ -28,6 +28,7 @@ class InventoriesController < ApplicationController
       flash[:notice] = "Inventory created"
       redirect_to van_inventories_path(@inventory.van)
     else
+      flash[:alert]  =  @inventory.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -35,6 +36,7 @@ class InventoriesController < ApplicationController
   private
 
   def inventory_params
+    console
     params.require(:inventory).permit(:product_id, :quantity_available, :price)
   end
 
@@ -52,8 +54,8 @@ class InventoriesController < ApplicationController
 
   def build_inventory
     @inventory = Inventory.new(inventory_params)
-    @inventory.price = params[:price]
-    @inventory.user = current_user
+    # @inventory.price = params[:price]
+    # @van.user = current_user
     @inventory.van = @van
   end
 end
