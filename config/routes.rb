@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "search", to: "pages#search"
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :vans, only: %i[index show] do
+  resources :vans, only: %i[index show new create] do
     resources :reviews, only: %i[index new create]
 
     get "tracking" => "vans#tracking", as: :tracking

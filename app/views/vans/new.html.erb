@@ -1,0 +1,15 @@
+<h1>Register as a Van Driver</h1>
+
+<%= form_with(model: @van, local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <%= form.submit "Register as Van Driver" %>
+<% end %>
