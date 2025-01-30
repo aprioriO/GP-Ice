@@ -5,13 +5,11 @@ class InventoriesController < ApplicationController
   before_action :build_inventory, only: :create
 
   def index
-    # @van = Van.find(params[:van_id])
     @inventories = @van.inventories
     @user = current_user
   end
 
   def show
-    # @van = Van.find(params[:van_id])
     @inventory = @van.inventories.find_by(id: params[:id])
     if @inventory.nil?
       redirect_to van_inventories_path(@van), alert: 'Inventory not found'
@@ -53,8 +51,6 @@ class InventoriesController < ApplicationController
 
   def build_inventory
     @inventory = Inventory.new(inventory_params)
-    # @inventory.price = params[:price]
-    # @van.user = current_user
     @inventory.van = @van
   end
 end
