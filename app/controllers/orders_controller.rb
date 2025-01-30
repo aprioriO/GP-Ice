@@ -47,7 +47,6 @@ class OrdersController < ApplicationController
 #     @order = Order.create(user: current_user, confirmed_status: false, paid_status: false)
 #     if params[:product_ids].present?
 #       params[:product_ids].each { |product_id| @order.order_products.create(product_id: product_id) }
-
     end
     redirect_to order_checkout_path(@order)
   end

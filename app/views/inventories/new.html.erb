@@ -1,0 +1,15 @@
+<h1>Add product to the store</h1>
+
+<h3>Add Products to the Store</h3>
+<%= form_with url: van_inventories_path, method: :post do |f| %>
+  <% 5.times do |i| %>
+    <div class="form-group">
+      <%= label_tag "product_#{i}", "Select Product ##{i + 1}" %>
+      <%= select_tag "product_ids[]", options_from_collection_for_select(@products, :id, :name), prompt: "Choose a product", class: "form-control" %>
+    </div>
+  <% end %>
+
+  <%= f.submit "Add product", class: "btn btn-primary mt-3" %>
+<% end %>
+
+<%= link_to "Back to Orders List", orders_path, class: "btn btn-secondary mt-3" %>
