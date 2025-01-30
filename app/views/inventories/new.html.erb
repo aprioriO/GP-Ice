@@ -1,8 +1,17 @@
-<h1>Add product to the store</h1>
+<div class="my-container">
+  <h1>Add product to the store</h1>
 
-<%= simple_form_for [@van, @inventory] do |f| %>
-  <%= f.association :product, prompt: "Select a product", input_html: {data: {controller: "tom-select"}} %>
-  <%= f.input :quantity_available, placeholder: "Quantity Available" %>
-  <%= f.input :price, placeholder: "Price" %>
-  <%= f.submit class: "btn btn-flat" %>
-<% end %>
+  <div class="container">
+    <%= simple_form_for [@van, @inventory] do |f| %>
+      <%= f.association :product, prompt: "Select a product", input_html: {data: {controller: "tom-select"}} %>
+      <%= f.input :quantity_available, placeholder: "Quantity Available" %>
+      <%= f.input :price, placeholder: "Price" %>
+      <%= f.submit class: "btn btn-main" %>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= link_to "< Back to store", van_inventories_path(@van), class: "btn-main" %>
+  </div>
+</div>

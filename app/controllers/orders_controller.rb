@@ -73,7 +73,6 @@ class OrdersController < ApplicationController
 
   def checkout
     @order = Order.find(params[:order_id])
-
     if @order.update(confirmed_status: true)
       flash[:notice] = "Order successfully checked out!"
       render :checkout

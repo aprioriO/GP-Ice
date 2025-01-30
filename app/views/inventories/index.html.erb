@@ -25,6 +25,9 @@
                 <p><strong><%= number_to_currency(inventory.price) %></strong></p>
                 <%#= link_to "Edit product", van_product_path(@van, inventory.product), class: "btn-main" %>
                 <span>Quantity Available: <%= inventory.quantity_available %></span>
+                <div>
+                  <%= link_to "Delete",  van_inventory_path(inventory.van, inventory), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this item?" } %>
+                </div>
               </div>
 
               <%# <div class="product-image"> %>

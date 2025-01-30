@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  before_action :set_van, only: [:index, :show, :new, :create]
+  before_action :set_van, only: [:index, :show, :new, :create, :destroy]
   before_action :set_products, only: [:new, :create]
   before_action :set_product, only: [:new, :create]
   before_action :build_inventory, only: :create
@@ -29,6 +29,12 @@ class InventoriesController < ApplicationController
       flash[:alert]  = "Inventory not created"
       render :new
     end
+  end
+
+  def destroy
+    @inventory = Inventory.find(params[:id])
+    @inventory.destroy
+    redirect_to van_inventories_path(@inventory.van), notice: 'Order deleted.'
   end
 
   private
