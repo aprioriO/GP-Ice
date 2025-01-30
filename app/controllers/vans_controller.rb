@@ -8,6 +8,19 @@ class VansController < ApplicationController
     @orders = @van.orders
   end
 
+  def new
+    @van = Van.new
+  end
+
+  def create
+    @van = current_user.build_van(van_params) # Allows each user to have only one van
+    if @van.save
+      flash[:notice] = "You are now a van driver!"
+      redirect_to @van
+    else
+      render :new
+    end
+  end
 
   def index
     @vans = Van.all
@@ -28,10 +41,13 @@ class VansController < ApplicationController
     # @inventory_product = @inventories.find_by(product_id: params[:id])
   end
 
-end
+  private
 
-private
+  def van_find
+    @van = Van.find(params[:id])
+  end
 
-def van_find
-  @van = Van.find(params[:id])
+  def van_params
+    params.require(:van).permit(:name, :location)
+  end
 end
