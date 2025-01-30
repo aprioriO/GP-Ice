@@ -13,4 +13,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
 
   validates :email, :password, presence: true
+
+  def van_owner?
+    van.present?
+  end
 end
