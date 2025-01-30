@@ -32,7 +32,7 @@ vans = []
 users.each do |user|
   vans << Van.create!(
     name: "#{Faker::Food.ingredient} #{Faker::Name.last_name}'s Ice Cream Van",
-    location: Faker::Address.full_address,
+    location: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.postcode}, United Kingdom",
     user_id: user.id
   )
 end
