@@ -16,28 +16,17 @@ class InventoriesController < ApplicationController
 
   def new
     @van = Van.find(params[:van_id])
-    @inventory = @van.inventories.new
+    @inventory = Inventory.new
+    @inventory.van = @van
     @products = Product.all
-    end
   end
 
   def create
     @van = Van.find(params[:van_id])
-    @inventory = @van.inventories.new(inventory_params)
-    if @inventory.save
-      redirect_to van_inventories_path(@van, @inventory), notice: 'Inventory created'
-    else
-      render :new
-    end
-  end
-
-  def create
-    @inventory = @van.inventories.new(inventory_params)
-    @inventory.user = current_user
+    @product = Product.find(params[product_id: :product_id])
+    @inventory = @van.inventories.find_or_initialize_by(product: @product)
+    # @inventory.user = current_user
     @inventory.van = @van
-    @inventory.quantity_avaliable = 0
-    @inventory.price = 0
-    @product = Product.find(params[:product_id])
     if @inventory.save
       flash[:notice] = "Inventory created"
       redirect_to van_inventories_path(@inventory.van)
@@ -45,3 +34,4 @@ class InventoriesController < ApplicationController
       render :new
     end
   end
+end
