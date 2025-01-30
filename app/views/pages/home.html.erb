@@ -5,8 +5,14 @@
     <p>Find the nearest van, place your order, and pick it up hassle-free!</p>
     <div class="search">
       <div class="search-bar">
-        <input type="text" placeholder="Enter your postcode">
-        <%= link_to "Search", vans_path  %>
+        <%= form_with url: vans_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
       </div>
     </div>
 
@@ -53,3 +59,5 @@
     </div>
   </div>
 </div>
+
+
