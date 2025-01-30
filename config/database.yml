@@ -79,6 +79,8 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
   database: gp_ice_production
   username: gp_ice
   password: <%= ENV["GP_ICE_DATABASE_PASSWORD"] %>
