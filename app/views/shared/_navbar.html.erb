@@ -15,8 +15,8 @@
           <span class="nav-text">Map</span>
         <% end %>
 
-       <% if user_signed_in? && current_user.van_owner? && @inventory.present? %>
-          <%= link_to van_inventory_path(@van, @inventory), class: "nav-link" do %>
+       <% if user_signed_in? && current_user.van_owner? %>
+          <%= link_to van_inventories_path(current_user.van), class: "nav-link" do %>
             <i class="fa-solid fa-van-shuttle"></i>
             <span class="nav-text">My Store</span>
           <% end %>
