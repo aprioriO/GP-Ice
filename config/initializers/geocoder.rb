@@ -25,10 +25,16 @@ Geocoder.configure(
   #   prefix: 'geocoder:'
   # }
 
+<<<<<<< HEAD
   # [...]
+=======
+>>>>>>> 69a4b6f01049ef1c8635406712b2237c892f9108
   timeout: 5, # seconds
   lookup: :mapbox, # Defaults to :nominatim, which is less reliable but free
   api_key: ENV['MAPBOX_API_KEY'],
   units: :km, # Defaults to miles (:mi)
+<<<<<<< HEAD
   # [...]
+=======
+>>>>>>> 69a4b6f01049ef1c8635406712b2237c892f9108
 )
