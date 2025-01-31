@@ -36,7 +36,12 @@ class InventoriesController < ApplicationController
   end
 
   def update
-
+    @inventory = Inventory.find(params[:id])
+    if @inventory.update(inventory_params)
+      redirect_to van_inventories_path(@inventory.van), notice: 'Inventory updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
