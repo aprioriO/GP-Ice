@@ -1,15 +1,19 @@
-<h1>Register as a Van Driver</h1>
+<div class="container-form">
+  <div class="my-form">
 
-<%= form_with(model: @van, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <h1>Register as a Van Driver</h1>
+
+    <%= simple_form_for @van do |f| %>
+      <div>
+        <%= f.input :name, label: "Name" %>
+      </div>
+
+      <div>
+        <%= f.input :location, label: "Location" %>
+      </div>
+
+      <%= f.submit "Register", class: "btn-main" %>
+    <% end %>
+
   </div>
-
-  <div>
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <%= form.submit "Register as Van Driver" %>
-<% end %>
+</div>
