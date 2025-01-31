@@ -34,6 +34,7 @@ class OrdersController < ApplicationController
       redirect_to @order, notice: "Order created successfully!"
     else
       render :new, status: :unprocessable_entity
+
     end
   end
 
@@ -60,7 +61,6 @@ class OrdersController < ApplicationController
 
   def checkout
     @order = Order.find(params[:order_id])
-
     if @order.update(confirmed_status: true)
       flash[:notice] = "Order successfully checked out!"
       render :checkout
