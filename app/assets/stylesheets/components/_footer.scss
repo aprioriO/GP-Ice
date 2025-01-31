@@ -1,0 +1,32 @@
+.my-footer {
+  text-align: center;
+  // position: fixed;
+  // bottom: 0;
+  // left: 50%;
+  // transform: translateX(-50%);
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.282), rgba(0, 0, 0, 0));
+
+  li {
+    display: inline-block;
+  }
+
+  i {
+    color: white;
+    font-size: 40px;
+    margin: 0px 15px;
+    text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      color: $pink;
+    }
+  }
+
+  p {
+    color: white;
+    font-size: 20px;
+    text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+}
