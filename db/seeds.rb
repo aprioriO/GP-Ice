@@ -85,6 +85,14 @@ asset_image_paths = [
 <<<<<<< HEAD
 =======
 
+asset_image_paths = [
+  "01_vanilla.png",
+  "02_chocolate.png",
+  "03_strawberry.png",
+  "04_chocolate_chip.png",
+  "05_cookie_dough.png"
+]
+
 
 >>>>>>> 893ccc15810497e82fbee74c8aa43ad69bd357a5
 ice_cream_flavors = ["Vanilla", "Chocolate", "Strawberry", "Mint Chocolate Chip", "Cookie Dough"]
