@@ -60,7 +60,7 @@ export default class extends Controller {
       .then((data) => {
         const [lng, lat] = data.features[0].center
         this.map.setCenter([lng, lat])
-        this.map.setZoom(9)
+        this.map.setZoom(12)
       })
   }
 
