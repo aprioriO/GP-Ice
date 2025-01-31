@@ -23,13 +23,16 @@ class VansController < ApplicationController
   end
 
   def index
+    @location = params[:query]
     @vans = Van.all
     @markers = @vans.geocoded.map do |van|
       {
         lat: van.latitude,
         lng: van.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {van: van}),
-        marker_html: render_to_string(partial: "marker", locals: {van: van})
+        marker_html: render_to_string(partial: "marker", locals: {van: van}),
+        marker_html: render_to_string(partial: "marker", locals: {location: location})
+
       }
     end
   end

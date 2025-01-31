@@ -17,9 +17,11 @@
   <%= @inventory.price %>
 </p>
 
-<%= form_for [@van, @order] do |f| %>
+<%= form_for [@van, @order], url: van_add_to_cart_path(@van, product_id: @product.id), method: :post do |f| %>
   <%= label_tag :quantity %>
   <%= number_field_tag :quantity_ordered %>
   <%= hidden_field_tag :product_id, @product.id %>
-  <%= f.submit %>
+  <%= f.submit "Add to Cart" %>
+
+  <%= link_to "Update Order", van_cart_path(@van), class: "btn btn-success" %>
 <% end %>

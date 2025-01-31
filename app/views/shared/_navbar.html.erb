@@ -10,12 +10,12 @@
         <span class="nav-text">Home</span>
       <% end %>
 
-         <%= link_to  vans_path, class: "nav-link" do %>
+        <%= link_to  vans_path, class: "nav-link" do %>
           <i class="fa-solid fa-map"></i>
           <span class="nav-text">Map</span>
         <% end %>
 
-       <% if user_signed_in? && current_user.van_owner? %>
+        <% if user_signed_in? && current_user.van_owner? %>
           <%= link_to van_inventories_path(current_user.van), class: "nav-link" do %>
             <i class="fa-solid fa-van-shuttle"></i>
             <span class="nav-text">My Store</span>
