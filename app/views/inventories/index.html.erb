@@ -12,6 +12,7 @@
 <div class="van-container">
   <div class="van-show">
       <%= link_to "Add product to the list", new_van_inventory_path(@van), class: "btn-secondary" %>
+      <%= link_to "View your orders", van_orders_path(@van), class: "btn-secondary" %>
   </div>
 </div>
 
@@ -35,7 +36,7 @@
                 <p><strong><%= number_to_currency(inventory.price) %></strong></p>
                 <%#= link_to "Edit product", van_product_path(@van, inventory.product), class: "btn-main" %>
                 <span>Quantity Available: <%= inventory.quantity_available %></span>
-                <br></br>
+                <br><br>
                 <%# <div class="d-flex justify-content-between">
                   <div> %>
                     <%= link_to "Amend",  edit_van_inventory_path(inventory.van, inventory), class: "btn btn-main"%>
