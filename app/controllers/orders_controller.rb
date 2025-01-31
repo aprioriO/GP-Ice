@@ -42,13 +42,14 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
-    if @order.update(confirmed_status: true)
-      redirect_to van_orders_path(@order.van), notice: 'Order confirmed.'
+    @order_product = OrderProduct.find(params[:id])
+    if @order_product.update(order_product_params)
+      redirect_to cart_path(@order_product.order.van), notice: "Order updated successfully."
     else
-      redirect_to van_orders_path(@order.van), alert: 'Failed to confirm order.'
+      redirect_to product_path(@order_product.product), alert: "Failed to update order."
     end
   end
+
 
   def destroy
     @order = Order.find(params[:id])
