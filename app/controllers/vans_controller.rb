@@ -40,7 +40,7 @@ class VansController < ApplicationController
     @user = @van.user
     @products = @van.products
     @inventories = @van.inventories.includes(:product)
-    # @inventory_product = @inventories.find_by(product_id: params[:id])
+    # @product = @inventories.find_by(product_id: params[:id])
   end
 
   private

@@ -13,14 +13,24 @@ User.destroy_all
 
 # Create Users
 users = []
+
+user_images_paths = [
+  "icecream_van_1.png",
+  "icecream_van_2.png",
+  "icecream_van_3.png",
+  "icecream_van_4.png",
+  "icecream_van_5.png"
+]
 puts "Creating Users"
+
+
 5.times do |i|
   users << User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    photo: Faker::LoremFlickr.image
+    photo: user_images_paths[i]
   )
 end
 puts "Users created successfully"
@@ -72,8 +82,16 @@ ice_cream_descriptions = [
   "A classic and creamy treat that brings back childhood memories.",
   "Rich and indulgent, perfect for satisfying your sweet tooth.",
   "A refreshing and fruity delight, bursting with real strawberry flavor.",
-  "Minty fresh with chunks of chocolate for a delightful crunch.",
+  "Fresh with chunks of chocolate for a delightful crunch.",
   "Decadent and filled with chunks of chewy cookie dough."
+]
+
+asset_image_paths = [
+  "01_vanilla.png",
+  "02_chocolate.png",
+  "03_strawberry.png",
+  "04_chocolate_chip.png",
+  "05_cookie_dough.png"
 ]
 
 
@@ -84,7 +102,7 @@ ice_cream_flavors.each_with_index do |flavor, index|
   products << Product.create!(
     name: flavor,
     description: ice_cream_descriptions[index],
-    photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['icecream'])
+    photo: asset_image_paths[index]
   )
 end
 
