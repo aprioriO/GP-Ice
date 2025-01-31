@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  before_action :set_van, only: [:index, :show, :new, :create, :destroy]
+  before_action :set_van, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_products, only: [:new, :create]
   before_action :set_product, only: [:new, :create]
   before_action :build_inventory, only: :create
@@ -31,6 +31,14 @@ class InventoriesController < ApplicationController
     end
   end
 
+  def edit
+    @inventory = Inventory.find(params[:id])
+  end
+
+  def update
+
+  end
+
   def destroy
     @inventory = Inventory.find(params[:id])
     @inventory.destroy
@@ -38,6 +46,9 @@ class InventoriesController < ApplicationController
   end
 
   private
+  # def set_inventory
+  #   @inventory = Inventory.find(params[:id])
+  # end
 
   def inventory_params
     params.require(:inventory).permit(:product_id, :quantity_available, :price)
