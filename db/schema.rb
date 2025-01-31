@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_29_213231) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_31_122914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_29_213231) do
     t.boolean "paid_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["user_id"], name: "index_orders_on_user_id"
     t.index ["van_id"], name: "index_orders_on_van_id"
   end

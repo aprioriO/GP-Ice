@@ -2,3 +2,7 @@
 <p>Order #<%= @order.id %></p>
 
 <h2>Order Summary</h2>
+
+<% @order.order_products.each do |order_product| %>
+  <p><%= order_product.product.name %> - Quantity: <%= order_product.quantity_ordered %></p>
+<% end %>

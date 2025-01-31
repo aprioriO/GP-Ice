@@ -3,6 +3,14 @@
   flex-direction: column;
   width: 75%;
   margin: 50px auto;
+
+  h2 {
+    font-family: "Ultra", serif;
+  }
+
+  label, input {
+    font-family: "Nunito", serif;
+  }
 }
 
 .container-form {
@@ -10,6 +18,6 @@
   background-color: white;
   width: 75%;
   max-width: 1800px;
-  margin: 0px auto;
+  margin: 10px auto;
   padding: 15px;
 }
