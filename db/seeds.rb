@@ -1,7 +1,6 @@
 # require 'cloudinary'
 # require "open-uri"
 require 'faker'
-
 # Clear existing records
 Review.destroy_all
 Order.destroy_all
@@ -10,7 +9,6 @@ Inventory.destroy_all
 Product.destroy_all
 Van.destroy_all
 User.destroy_all
-
 # Create Users
 users = []
 puts "Creating Users"
@@ -24,23 +22,16 @@ puts "Creating Users"
   )
 end
 puts "Users created successfully"
-
-
 # Create Unique Vans
 puts "Creating Vans"
 vans = []
 addresses = [
   "123 High Street, Palmers Green, London, N13 4XZ, United Kingdom",
-
   "456 Green Lanes, Winchmore Hill, London, N14 4YZ, United Kingdom",
-
   "789 Woodside Avenue, Southgate, London, EN4 5AB, United Kingdom",
-
   "321 Church Street, Arnos Grove, London, N22 4CD, United Kingdom",
-
   "654 Oakwood Park, New Southgate, London, N17 9EF, United Kingdom",
 ]
-
 users.each_with_index do |user, index|
   vans << Van.create!(
     name: "#{Faker::Food.ingredient} #{Faker::Name.last_name}'s Ice Cream Van",
@@ -48,9 +39,7 @@ users.each_with_index do |user, index|
     user_id: user.id
   )
 end
-
 puts "Vans created successfully"
-
 # Create Favourites
 puts "Creating Favourites"
 favourites = []
@@ -60,10 +49,7 @@ favourites = []
     van_id: vans.sample.id
   )
 end
-
-
 puts "Favourites created successfully"
-
 # Create Products
 puts "Creating Products"
 products = []
@@ -72,31 +58,29 @@ ice_cream_descriptions = [
   "A classic and creamy treat that brings back childhood memories.",
   "Rich and indulgent, perfect for satisfying your sweet tooth.",
   "A refreshing and fruity delight, bursting with real strawberry flavor.",
-  "Minty fresh with chunks of chocolate for a delightful crunch.",
+  "Fresh with chunks of chocolate for a delightful crunch.",
   "Decadent and filled with chunks of chewy cookie dough."
 ]
-
-
+asset_image_paths = [
+  "01_vanilla.png",
+  "02_chocolate.png",
+  "03_strawberry.png",
+  "04_chocolate_chip.png",
+  "05_cookie_dough.png"
+]
 ice_cream_flavors = ["Vanilla", "Chocolate", "Strawberry", "Mint Chocolate Chip", "Cookie Dough"]
-
 # Create Products with specific descriptions
 ice_cream_flavors.each_with_index do |flavor, index|
   products << Product.create!(
     name: flavor,
     description: ice_cream_descriptions[index],
-    photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['icecream'])
+    photo: asset_image_paths[index]
   )
 end
-
-
-
 puts "Products created successfully"
-
-
 # Create Inventories
 puts "Creating Inventories"
 inventories = []
-
 vans.each do |van|
   products.each do |product|
     inventories << Inventory.create!(
@@ -107,9 +91,7 @@ vans.each do |van|
     )
   end
 end
-
 puts "Inventories created successfully"
-
 # Create Orders
 puts "Creating Orders"
 orders = []
@@ -123,9 +105,7 @@ users.each do |user|
     )
   end
 end
-
 puts "Orders created successfully"
-
 # Create Order Products
 puts "Creating Order Products"
 order_products = []
@@ -138,6 +118,5 @@ orders.each do |order|
     )
   end
 end
-
 puts "Order Products created successfully"
 puts "Seeding completed successfully!"

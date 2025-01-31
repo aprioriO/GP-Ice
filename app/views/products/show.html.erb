@@ -3,7 +3,7 @@
 <%= @product %>
 
 <h1>Please select the quantity of products you want to buy</h1>
-<%= image_tag(@product.photo) if @product.photo.present? %>
+<%= image_tag @product.photo if @product.photo.present? %>
 <p>
   <strong>Product:</strong>
   <%= @product.name %>
