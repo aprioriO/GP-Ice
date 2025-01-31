@@ -32,7 +32,6 @@ class VansController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {van: van}),
         marker_html: render_to_string(partial: "marker", locals: {van: van}),
         marker_html: render_to_string(partial: "marker", locals: {location: location})
-
       }
     end
   end
