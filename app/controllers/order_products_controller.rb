@@ -13,7 +13,7 @@ class OrderProductsController < ApplicationController
     @order_product = @order.order_products.find_or_initialize_by(product: @product)
 
     if @order_product.save
-      redirect_to van_cart_path(@order.van), notice: "Product added to cart."
+      redirect_to van_cart_path(@order_product), notice: "Product added to cart."
     else
       redirect_to van_cart_path(@order.van), alert: "Failed to add product."
     end
