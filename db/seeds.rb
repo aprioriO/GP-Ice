@@ -13,6 +13,7 @@ User.destroy_all
 
 # Create Users
 users = []
+puts "Creating Users"
 5.times do |i|
   users << User.create!(
     email: Faker::Internet.email,
@@ -28,15 +29,25 @@ puts "Users created successfully"
 # Create Unique Vans
 puts "Creating Vans"
 vans = []
+addresses = [
+  "123 High Street, Palmers Green, London, N13 4XZ, United Kingdom",
 
-users.each do |user|
+  "456 Green Lanes, Winchmore Hill, London, N14 4YZ, United Kingdom",
+
+  "789 Woodside Avenue, Southgate, London, EN4 5AB, United Kingdom",
+
+  "321 Church Street, Arnos Grove, London, N22 4CD, United Kingdom",
+
+  "654 Oakwood Park, New Southgate, London, N17 9EF, United Kingdom",
+]
+
+users.each_with_index do |user, index|
   vans << Van.create!(
     name: "#{Faker::Food.ingredient} #{Faker::Name.last_name}'s Ice Cream Van",
-    location: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.postcode}, United Kingdom",
+    location: addresses[index % addresses.length], # Assign addresses in a round-robin fashion
     user_id: user.id
   )
 end
-
 
 puts "Vans created successfully"
 

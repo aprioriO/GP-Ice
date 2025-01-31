@@ -1,29 +1,35 @@
-// import { Controller } from "@hotwired/stimulus"
-
-// // Connects to data-controller="map"
-// export default class extends Controller {
-//   connect() {
-//   }
-// }
-
 import { Controller } from "@hotwired/stimulus"
-import mapboxgl from 'mapbox-gl' // Don't forget this!
+import mapboxgl from 'mapbox-gl'
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    location: String
   }
 
   connect() {
+    console.log(this.locationValue)
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+
+    if (this.hasLocationValue) {
+      this.#zoomToPostcode(this.locationValue)
+      this.#addLocationMarker(this.locationValue)
+    }
+
+    this.map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    }))
   }
 
   #addMarkersToMap() {
@@ -42,9 +48,32 @@ export default class extends Controller {
     })
   }
 
-    #fitMapToMarkers() {
-      const bounds = new mapboxgl.LngLatBounds()
-      this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-      this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-    }
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds()
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  }
+
+  #zoomToPostcode(postcode) {
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${postcode}.json?types=postcode&access_token=${this.apiKeyValue}`)
+      .then(response => response.json())
+      .then((data) => {
+        const [lng, lat] = data.features[0].center
+        this.map.setCenter([lng, lat])
+        this.map.setZoom(12)
+      })
+  }
+
+  #addLocationMarker(postcode) {
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${postcode}.json?types=postcode&access_token=${this.apiKeyValue}`)
+      .then(response => response.json())
+      .then((data) => {
+        const [lng, lat] = data.features[0].center
+
+        // Create a marker and add it to the map
+        new mapboxgl.Marker()
+          .setLngLat([lng, lat])
+          .addTo(this.map)
+      })
+  }
 }
