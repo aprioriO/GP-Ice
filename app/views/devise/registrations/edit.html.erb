@@ -1,5 +1,17 @@
 <div class="container-form">
   <div class="my-form">
+    <h2>Register your Ice Cream Van</h2>
+    <div class="container">
+      <%= link_to "< Back", :back, class: "btn-main" %>
+    </div>
+    <br>
+    <div class="container">
+      <%= link_to "Register Ice Cream Van", new_van_path, class: "btn-main" %>
+    </div>
+  </div>
+</div>
+<div class="container-form">
+  <div class="my-form">
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -34,20 +46,13 @@
 
 <div class="container-form">
   <div class="my-form">
-    <h3>Cancel my account</h3>
-
+    <h2>Cancel my account</h2>
     <div>
-      Unhappy?
       <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-main" %>
     </div>
-
     <br>
     <div class="container">
       <%= link_to "< Back", :back, class: "btn-main" %>
-    </div>
-    <br>
-    <div class="container">
-      <%= link_to "Register Ice Cream Van", new_van_path, class: "btn-main" %>
     </div>
   </div>
 </div>
