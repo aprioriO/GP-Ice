@@ -1,22 +1,33 @@
-<h1>Orders</h1>
-<div class="card">
-  <div class="card-header">
-    <p>Order ID</p>
-    <p>Van ID</p>
-    <p>Confirmed</p>
-    <p>Paid</p>
-    <p>Created At</p>
-    <div class="select-van mb-3 mx-3">
-      <%= form_with url: orders_path, method: :get, data: { turbo_frame: "orders_list" } do |form| %>
-        <%= form.select :van_id, options_from_collection_for_select(@vans, :id, :name, params[:van_id]), { prompt: "Select a Van" }, { onchange: "this.form.submit();" } %>
+<div class="container-form">
+  <div class="container">
+    <%= link_to "< Homepage", root_path, class: "btn btn-main" %>
+  </div>
+
+  <div class="my-form">
+    <h2>Orders</h2>
+    <div class="card">
+      <div class="card-header">
+        <p>Order ID</p>
+        <p>Van ID</p>
+        <p>Confirmed</p>
+        <p>Paid</p>
+        <p>Created At</p>
+        <div class="select-van mb-3 mx-3">
+          <%= form_with url: orders_path, method: :get, data: { turbo_frame: "orders_list" } do |form| %>
+            <%= form.select :van_id, options_from_collection_for_select(@vans, :id, :name, params[:van_id]), { prompt: "Select a Van" }, { onchange: "this.form.submit();" } %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= turbo_frame_tag "orders_list" do %>
+      <%= render partial: "orders_list", locals: { orders: @orders } %>
       <% end %>
     </div>
   </div>
-
-  <%= turbo_frame_tag "orders_list" do %>
-  <%= render partial: "orders_list", locals: { orders: @orders } %>
-  <% end %>
+  
+  <div class="my-form">
+    <div class="container">
+      <%= link_to "Add a New Order", new_order_path, class: "btn btn-main" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "Go to Homepage", root_path, class: "btn btn-primary" %>
-<%= link_to "Add a New Order", new_order_path, class: "btn btn-success" %>
