@@ -16,7 +16,7 @@ class VansController < ApplicationController
     @van = current_user.build_van(van_params) # Allows each user to have only one van
     if @van.save
       flash[:notice] = "You are now a van driver!"
-      redirect_to @van.inventories.new
+      redirect_to @van
     else
       render :new
     end

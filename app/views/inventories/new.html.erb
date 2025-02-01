@@ -1,4 +1,7 @@
 <div class="container-form">
+  <div>
+    <%= link_to "< Back to store", van_inventories_path(@van), class: "btn-main" %>
+  </div>
   <div class="my-form">
     <h1>Add product to the store</h1>
 
@@ -9,11 +12,6 @@
         <%= f.input :price, placeholder: "Price" %>
         <%= f.submit class: "btn btn-main" %>
       <% end %>
-    </div>
-
-    <br>
-    <div>
-      <%= link_to "< Back to store", van_inventories_path(@van), class: "btn-main" %>
     </div>
   </div>
 </div>
