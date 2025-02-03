@@ -1,26 +1,14 @@
 class FavouritesController < ApplicationController
-  before_action :set_van, only: [:new, :create]
+  before_action :set_van, only: [:create]
 
   def index
     @user = current_user
     @favourites = @user.favourites
   end
 
-  def new
-    @favourites = Favourite.new
-    @favourites.van = @van
-  end
-
   def create
-    @favourites = Favourite.new(favourites_params)
-    @favourites.van = @van
-    if @favourites.save
-      flash[:notice] = "favourites added"
-      redirect_to favourites_path
-    else
-      flash[:alert]  = "favourites not added"
-      render :new
-    end
+    Favourite.create!(van: @van, user: current_user)
+    redirect_to van_path(@van)
   end
 
   def destroy
