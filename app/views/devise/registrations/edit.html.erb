@@ -22,15 +22,17 @@
   </div>
 </div>
 
-<div class="container-form">
-  <div class="my-form">
-    <h2>See Requests from Customers</h2>
-    <br>
-    <div class="container">
-      <%= link_to "View Requests from Customers", van_orders_path(current_user.van), class: "btn-main" %>
+<% if current_user&&current_user.van %>
+  <div class="container-form">
+    <div class="my-form">
+      <h2>See Requests from Customers</h2>
+      <br>
+      <div class="container">
+        <%= link_to "View Requests from Customers", van_orders_path(current_user.van), class: "btn-main" %>
+      </div>
     </div>
   </div>
-</div>
+<%end %>
 
 <div class="container-form">
   <div class="my-form">
