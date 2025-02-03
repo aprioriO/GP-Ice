@@ -71,19 +71,7 @@ ice_cream_descriptions = [
   "Fresh with chunks of chocolate for a delightful crunch.",
   "Decadent and filled with chunks of chewy cookie dough."
 ]
-<<<<<<< HEAD
-=======
 
->>>>>>> 893ccc15810497e82fbee74c8aa43ad69bd357a5
-asset_image_paths = [
-  "01_vanilla.png",
-  "02_chocolate.png",
-  "03_strawberry.png",
-  "04_chocolate_chip.png",
-  "05_cookie_dough.png"
-]
-<<<<<<< HEAD
-=======
 
 asset_image_paths = [
   "01_vanilla.png",
@@ -93,8 +81,6 @@ asset_image_paths = [
   "05_cookie_dough.png"
 ]
 
-
->>>>>>> 893ccc15810497e82fbee74c8aa43ad69bd357a5
 ice_cream_flavors = ["Vanilla", "Chocolate", "Strawberry", "Mint Chocolate Chip", "Cookie Dough"]
 # Create Products with specific descriptions
 ice_cream_flavors.each_with_index do |flavor, index|

@@ -22,17 +22,17 @@
           <% end %>
         <% end %>
 
-        <% if user_signed_in? %>
-          <%= link_to van_cart_path(current_user.van), class: "nav-link" do %>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="nav-text">Cart</span>
-          <% end %>
-        <% else %>
-          <%= link_to van_cart_path(1), class: "nav-link" do %>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="nav-text">Cart</span>
-          <% end %>
-        <% end %>
+        <%# if user_signed_in? %>
+          <%#= link_to van_cart_path(current_user.van || 1), class: "nav-link" do %>
+            <%# <i class="fa-solid fa-cart-shopping"></i>
+            <span class="nav-text">Cart</span> %>
+          <%# end %>
+        <%# else %>
+          <%#= link_to van_cart_path(1), class: "nav-link" do %>
+            <%# <i class="fa-solid fa-cart-shopping"></i>
+            <span class="nav-text">Cart</span> %>
+          <%# end %>
+        <%# end %>
 
         <%= link_to edit_user_registration_path, class: "nav-link" do %>
           <i class="fa-solid fa-user"></i>

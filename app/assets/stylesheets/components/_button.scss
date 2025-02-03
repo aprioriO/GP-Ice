@@ -7,6 +7,7 @@
   font-family: "Nunito", serif;
   transition: 0.3s ease;
   margin-right: 5px;
+  background-color: white;
 
   &:hover {
     background-color: $pink;
@@ -45,5 +46,23 @@
     background-color: red;
     padding: 10px 25px;
     color: white;
+  }
+}
+
+.quantity-btn {
+  padding: 10px 15px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  font-family: "Nunito", serif;
+  transition: 0.3s ease;
+  margin-right: 5px;
+  background-color: white;
+  width: fill;
+
+  &:hover {
+    background-color: $pink;
+    padding: 10px 25px;
   }
 }
