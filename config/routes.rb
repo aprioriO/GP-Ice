@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: "pages#home"
 
   get "search", to: "pages#search"
@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     patch "products/:id" => "products#update"
     resources :orders, only: %i[show create update destroy]
     resources :inventories
-    post "favourite" => "favourites#create", as: :favourite
+    # get "favourite" => "favourites#new"
+    # post "favourite" => "favourites#create"
   end
 
   get "cart", to: "order_products#show", as: :cart
@@ -25,5 +26,5 @@ Rails.application.routes.draw do
     get "checkout", to: "orders#checkout", as: :checkout
   end
 
-  resources :favourites, only: %i[index destroy]
+  resources :favourites, only: %i[index destroy create]
 end

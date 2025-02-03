@@ -1,0 +1,16 @@
+<h1><%= current_user.first_name %>'s favourite vans</h1>
+
+<% if @favourites.any? %>
+  <ul>
+    <% @favourites.each do |favourite| %>
+      <% if favourite.van %>
+        <li>
+          <%= favourite.van.name %>
+          <%= button_to "Remove from favourites", favourite_path(favourite), method: :delete %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No vans in your favourites list.</p>
+<% end %>
