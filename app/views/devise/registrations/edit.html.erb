@@ -11,6 +11,27 @@
     </div>
   </div>
 </div>
+
+<div class="container-form">
+  <div class="my-form">
+    <h2>See My Orders List</h2>
+    <br>
+    <div class="container">
+      <%= link_to "My Orders", orders_path, class: "btn-main" %>
+    </div>
+  </div>
+</div>
+
+<div class="container-form">
+  <div class="my-form">
+    <h2>See Requests from Customers</h2>
+    <br>
+    <div class="container">
+      <%= link_to "View Requests from Customers", van_orders_path(current_user.van), class: "btn-main" %>
+    </div>
+  </div>
+</div>
+
 <div class="container-form">
   <div class="my-form">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -39,7 +60,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Update", class: "btn-main" %>
+        <%= f.button :submit, "Save", class: "btn-main" %>
       </div>
     <% end %>
   </div>
