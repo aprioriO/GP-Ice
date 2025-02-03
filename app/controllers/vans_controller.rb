@@ -40,6 +40,7 @@ class VansController < ApplicationController
     @user = @van.user
     @products = @van.products
     @inventories = @van.inventories.includes(:product)
+    @favourite = Favourite.find_by(van: @van, user: current_user)
     # @product = @inventories.find_by(product_id: params[:id])
   end
 
