@@ -6,3 +6,15 @@
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
+
+#map-title {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  #map-title {
+    font-size: 20px;
+  }
+}
