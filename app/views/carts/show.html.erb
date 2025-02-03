@@ -29,7 +29,7 @@
         <li>
           <strong><%= order_product.product.name %></strong> -
           Quantity: <%= order_product.quantity_ordered %>
-          <%= link_to "Remove", remove_from_cart_path(order_product), method: :delete, class: "btn btn-danger btn-sm" %>
+          <%= link_to "Remove", remove_from_cart_path(order_product), method: :delete, class: "btn-delete" %>
         </li>
       <% end %>
     </ul>
@@ -37,6 +37,8 @@
 
   <%= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-success" if @order %>
 
-<% else %>
-  <p>Your cart is empty.</p>
-<% end %>
+    <% else %>
+      <p>Your cart is empty.</p>
+    <% end %>
+  </div>
+</div>

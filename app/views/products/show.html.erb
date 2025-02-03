@@ -11,7 +11,7 @@
     <hr class="product-line">
 
     <div class="quantity-center">
-      <%= form_for [@van, @order], url: van_add_to_cart_path(@van, product_id: @product.id), method: :post, data: { controller: "quantity" } do |f| %>
+      <%= form_for [@van, @order], url: add_to_cart_path(@van, product_id: @product.id), method: :post, data: { controller: "quantity" } do |f| %>
 
       <div class="quantity-selector">
         <button type="button" class="qty-btn minus" data-action="click->quantity#decrease">−</button>
