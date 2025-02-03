@@ -7,9 +7,13 @@
 
       <div class="van-info">
         <h1><%= @van.name %></h1>
-        <P>⭐⭐⭐⭐⭐</p>
+        <p>⭐⭐⭐⭐⭐</p>
+          <% if current_user.favourites.exists? %>
+            <%= button_to "🩷", favourite_path(@van), method: :delete, class: "btn btn-heart" %>
+          <% else %>
+            <%= button_to "🖤", van_favourite_path(@van), method: :post, class: "btn btn-heart" %>
+          <% end %>
       </div>
-
   </div>
 </div>
 
