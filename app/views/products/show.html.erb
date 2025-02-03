@@ -1,29 +1,32 @@
 <%= link_to "Back to Store", van_path(@van) %>
 
-<h1>Please select the quantity of products you want to buy</h1>
+<div class="product-show-card">
 
-<%= image_tag @product.photo if @product.photo.present? %>
-<p>
-  <strong>Product:</strong>
-  <%= @product.name %>
-</p>
+  <%= image_tag @product.photo if @product.photo.present? %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+  <div class="product-show-info">
+    <h3><%= @product.name %></h3>
+    <p><%= @product.description %></p>
+    <p><strong>£<%= @inventory.price %></strong></p>
+    <hr class="product-line">
 
-<p>
-  <strong>Price:</strong>
-  <%= @inventory.price %>
-</p>
+    <div class="quantity-center">
+      <%= form_for [@van, @order], url: van_add_to_cart_path(@van, product_id: @product.id), method: :post, data: { controller: "quantity" } do |f| %>
 
-<%= form_for [@van, @order], url: add_to_cart_path(@van, product_id: @product.id), method: :post do |f| %>
-  <%= f.label :quantity_ordered, "Quantity" %>
-  <%= f.number_field :quantity_ordered, value: 1, min: 1 %>
-  <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.hidden_field :van_id, value: @van.id %>
-  <%= f.submit "Add to Cart" %>
-<% end %>
+      <div class="quantity-selector">
+        <button type="button" class="qty-btn minus" data-action="click->quantity#decrease">−</button>
+        <%= f.number_field :quantity_ordered, value: 1, min: 1, class: "quantity-input", data: { quantity_target: "quantity" } %>
+        <button type="button" class="qty-btn plus" data-action="click->quantity#increase">+</button>
+      </div>
 
-<%= link_to "Update Order", add_to_cart_path(@van), class: "btn btn-success" %>
+      <%= f.hidden_field :product_id, value: @product.id %>
+      <%= f.hidden_field :van_id, value: @van.id %>
+
+      <%= f.submit "Add to Cart", class: "quantity-btn" %>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>

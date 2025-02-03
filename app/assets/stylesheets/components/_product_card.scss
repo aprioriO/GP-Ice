@@ -94,7 +94,9 @@ ul {
 
 
 .product-line {
+  border: none;
   color: $pink;
+  height: 0;
   border-bottom: 5px dotted $pink;
 }
 
@@ -121,4 +123,80 @@ ul {
   .product-info {
     width: 100%;
   }
+}
+
+
+.product-show-card {
+  background-color: white;
+  padding: 25px;
+  width: 75%;
+  max-width: 1000px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
+
+  img {
+    height: 400px;
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+}
+
+.product-show-info {
+  margin-top: 20px;
+
+  h3 {
+    font-family: "Ultra", serif;
+  }
+
+  p, label, input {
+    font-family: "Nunito", serif;
+  }
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.qty-btn {
+  background-color: #f0f0f000;
+  border: none;
+  padding: 10px 15px;
+  font-size: 50px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.qty-btn:hover {
+  background-color: #ddd;
+}
+
+.quantity-input {
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 80px;
+  width: 120px;
+  outline: none;
+  appearance: textfield;
+}
+
+/* Hide the default increment/decrement buttons in some browsers */
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fill;
 }
