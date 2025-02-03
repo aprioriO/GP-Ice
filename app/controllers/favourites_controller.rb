@@ -1,9 +1,9 @@
 class FavouritesController < ApplicationController
-  before_action :set_van, only: [:index, :new, :create, :destroy]
+  before_action :set_van, only: [:new, :create, :destroy]
 
   def index
-    @inventories = @van.favourites
     @user = current_user
+    @favourites = @user.favourites
   end
 
   def new

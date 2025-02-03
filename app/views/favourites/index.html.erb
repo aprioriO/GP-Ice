@@ -1,1 +1,5 @@
 <h1>Page for <%= current_user.first_name %>'s favourites vans</h1>
+
+<% if @favourites.empty? %>
+  <p>No vans in your favourites list.</p>
+<% end %>
