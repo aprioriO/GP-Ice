@@ -1,8 +1,16 @@
-<h1>Checkout</h1>
-<p>Order #<%= @order.id %></p>
+<div class="container-form">
+  <div class="my-form">
+    <h1>Checkout</h1>
+    <p>Order #<%= @order.id %></p>
 
-<h2>Order Summary</h2>
+    <h2>Order Summary</h2>
 
-<% @order.order_products.each do |order_product| %>
-  <p><%= order_product.product.name %> - Quantity: <%= order_product.quantity_ordered %></p>
-<% end %>
+    <% @order.order_products.each do |order_product| %>
+      <p><%= order_product.product.name %> - Quantity: <%= order_product.quantity_ordered %></p>
+    <% end %>
+
+    <div class="container">
+      <%= link_to "All my orders", orders_path, class: "btn-main" %>
+    </div>
+  </div>
+</div>
