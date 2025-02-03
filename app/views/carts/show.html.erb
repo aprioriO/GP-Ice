@@ -1,4 +1,24 @@
-<h1>My Cart</h1>
+<div class="container-form">
+  <div class="my-form">
+    <h2>My Cart</h2>
+
+    <%# if @order && @order.order_products.any? %>
+<!--       <ul> -->
+        <%# @order.order_products.each do |order_product| %>
+<!--           <li> -->
+<!--             <strong><%#= order_product.product.name %></strong> - -->
+<!--             Quantity: <%#= order_product.quantity_ordered %> -->
+<!--           </li> -->
+        <%# end %>
+<!--       </ul> -->
+    <%# else %>
+<!--       <p>Your cart is empty.</p> -->
+    <%# end %>
+<!--     <div> -->
+      <%#= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-main" if @order %>
+<!--     </div>
+  </div>
+</div> -->
 
 <% if @cart_items.present? %>
   <% @cart_items.each do |order| %>
