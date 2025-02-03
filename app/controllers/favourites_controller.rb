@@ -1,5 +1,5 @@
 class FavouritesController < ApplicationController
-  before_action :set_van, only: [:new, :create, :destroy]
+  before_action :set_van, only: [:new, :create]
 
   def index
     @user = current_user
@@ -25,6 +25,8 @@ class FavouritesController < ApplicationController
 
   def destroy
     @favourite = Favourite.find(params[:id])
+    @favourite.destroy
+    redirect_to favourites_path
   end
 
   private

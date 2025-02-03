@@ -4,7 +4,11 @@
   <ul>
     <% @favourites.each do |favourite| %>
       <% if favourite.van %>
-        <li><%= favourite.van.name %></li>
+        <li>
+          <%= favourite.van.name %>
+          <%= button_to "Remove from favourites", favourite_path(favourite), method: :delete %>
+        </li>
+
       <% end %>
     <% end %>
   </ul>
