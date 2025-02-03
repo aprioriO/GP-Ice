@@ -7,31 +7,25 @@ class OrderProductsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
-    @van = @product.inventories.first.van
+    product = Product.find(params[:product_id])
+    van = product.inventories.first.van
 
-    @order = Order.find_or_create_by(user: current_user, van: @van, confirmed_status: false, status: "pending")
-    @order_product = @order.order_products.find_or_initialize_by(product: @product)
+    order = Order.find_or_create_by(user: current_user, van: van, confirmed_status: false, status: "pending")
+    order_product = order.order_products.find_or_initialize_by(product: product)
 
-    if params[:order][:quantity_ordered].present?
-      @order_product.quantity_ordered = params[:order][:quantity_ordered].to_i
-    end
+    order_product.quantity_ordered = params[:order][:quantity_ordered].to_i if params[:order][:quantity_ordered].present?
 
-    if @order_product.save
-      redirect_to cart_path, notice: "Product added to cart."
-    else
-      redirect_to cart_path, alert: "Failed to add product."
-    end
+    message = order_product.save ? "Product added to cart." : "Failed to add product."
+    redirect_to cart_path, notice: message
   end
 
   def destroy
-    @order_product = OrderProduct.find(params[:id])
+    order_product = OrderProduct.find(params[:id])
+    order = order_product.order
 
-    if @order_product.destroy
-      redirect_to cart_path, notice: "Product removed from cart."
-    else
-      redirect_to cart_path, alert: "Failed to remove product."
-    end
+    order.destroy if order_product.destroy && order.order_products.empty?
+
+    redirect_to cart_path, notice: "Product removed from cart."
   end
 
   private

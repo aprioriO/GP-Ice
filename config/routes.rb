@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get "cart", to: "order_products#show", as: :cart
   post "cart/add/:product_id", to: "order_products#create", as: :add_to_cart
-  delete "cart/remove/:product_id", to: "order_products#destroy", as: :remove_from_cart
+  delete "cart/remove/:id", to: "order_products#destroy", as: :remove_from_cart
   delete "cart/clear", to: "order_products#clear", as: :clear_cart
 
   resources :orders, only: %i[index show new create] do
