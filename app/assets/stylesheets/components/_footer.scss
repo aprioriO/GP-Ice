@@ -1,12 +1,7 @@
 .my-footer {
-  margin-top: 50px;
+  margin: 50px 0px;
   text-align: center;
-  // position: fixed;
-  // bottom: 0;
-  // left: 50%;
-  // transform: translateX(-50%);
   width: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.282), rgba(0, 0, 0, 0));
 
   li {
     display: inline-block;
@@ -16,10 +11,12 @@
     color: white;
     font-size: 40px;
     margin: 0px 15px;
-    text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.25);
+    transition: 0.3s ease;
 
     &:hover {
-      color: $pink;
+      color: $primary-color;
+      font-size: 50px;
     }
   }
 
@@ -29,5 +26,22 @@
     text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
     margin-bottom: 0px;
     margin-top: 10px;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .my-footer {
+    i {
+      font-size: 20px;
+      margin: 0px 10px;
+
+      &:hover {
+        font-size: 25px;
+      }
+    }
+
+    p {
+      font-size: 15px;
+    }
   }
 }

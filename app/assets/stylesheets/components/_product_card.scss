@@ -17,6 +17,8 @@
   img {
     width: 30%;
     height: 30%;
+    object-fit: cover;
+    border-radius: 0 20px 20px 0;
   }
 }
 
@@ -34,13 +36,6 @@
   p {
     font-family: "Nunito", sans-serif;
   }
-}
-
-.product-image {
-  width: 100vh;
-  height: 100%;
-  object-fit: fill;
-  border-radius: 0 20px 20px 0;
 }
 
 ul {
@@ -118,12 +113,26 @@ ul {
 @media (min-width: 200px) and (max-width: 991.98px) {
   .product-card {
     flex-direction: column;
+
+    img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0px 0px 20px 20px;
+    }
   }
 
   .product-info {
     width: 100%;
   }
+
+  .product-info span {
+    display: block;
+    margin-top: 20px; /* Optional: Adds some spacing */
+  }
 }
+
+
 
 
 .product-show-card {
@@ -199,4 +208,20 @@ ul {
   justify-content: center;
   align-items: center;
   width: fill;
+}
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .product-show-card {
+
+    img {
+      height: 200px;
+    }
+  }
+
+  .quantity-input {
+    font-size: 50px;
+  }
+
+  .qty-btn {
+    font-size: 30px;
+  }
 }

@@ -1,3 +1,8 @@
+<div class="btn-back">
+  <%= link_to "< Back to map", vans_path %>
+</div>
+
+
   <div class="van-container">
     <div class="van-show">
 
@@ -36,18 +41,17 @@
                 <h3><strong><%= inventory.product.name %></strong></h3>
                 <hr class="product-line">
                 <p><%= inventory.product.description %></p>
-                <p><strong><%= number_to_currency(inventory.price) %></strong></p>
+                <p><strong>£<%= inventory.price %></strong></p>
                 <%= link_to "Add to basket", van_product_path(@van, inventory.product), class: "btn-main" %>
-                <span>Quantity Available: <%= inventory.quantity_available %></span>
+                <span><em>Quantity Available: <%= inventory.quantity_available %></em></span>
               </div>
 
-              <%# <div class="product-image"> %>
                 <% if inventory.product.photo.present? %>
-                  <%= image_tag inventory.product.photo, alt: inventory.product.name, class: "product-image" %>
+                  <%= image_tag inventory.product.photo, alt: inventory.product.name %>
                 <% else %>
                   <%= image_tag 'default_product_image.png', alt: 'Default Image' %>
                 <% end %>
-              <%# </div> %>
+
             </div>
         </li>
       <% end %>

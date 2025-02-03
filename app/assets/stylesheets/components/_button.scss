@@ -66,3 +66,21 @@
     padding: 10px 25px;
   }
 }
+
+.btn-back {
+  width: 75%;
+  max-width: 1000px;
+  margin: 10px auto;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-family: "Ultra", serif;
+    transition: 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+      font-size: 20px;
+    }
+  }
+}
