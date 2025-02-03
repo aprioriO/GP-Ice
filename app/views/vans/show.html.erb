@@ -1,9 +1,15 @@
   <div class="van-container">
     <div class="van-show">
 
+      <% if @van == current_user.van  %>
+      <div class="van-image">
+        <%= image_tag @user.image if @user.image.present? %>
+      </div>
+      <% else%>
       <div class="van-image">
         <%= image_tag @user.photo if @user.photo.present? %>
       </div>
+      <% end %>
 
       <div class="van-info">
         <h1><%= @van.name %></h1>
