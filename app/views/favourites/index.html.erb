@@ -1,5 +1,13 @@
-<h1>Page for <%= current_user.first_name %>'s favourites vans</h1>
+<h1><%= current_user.first_name %>'s favourite vans</h1>
 
-<% if @favourites.empty? %>
+<% if @favourites.any? %>
+  <ul>
+    <% @favourites.each do |favourite| %>
+      <% if favourite.van %>
+        <li><%= favourite.van.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
   <p>No vans in your favourites list.</p>
 <% end %>

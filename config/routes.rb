@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     patch "products/:id" => "products#update"
     resources :orders, only: %i[show create update destroy]
     resources :inventories
-    get "favourite" => "favourites#new"#, as: :new_favourite
-    post "favourite" => "favourites#create"#, as: :favourite
+    get "favourite" => "favourites#new"
+    post "favourite" => "favourites#create"
   end
 
   get "cart", to: "order_products#show", as: :cart

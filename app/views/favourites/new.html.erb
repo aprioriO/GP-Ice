@@ -1,1 +1,5 @@
-
+  <%# /vans/21/favourite %>
+  <%= simple_form_for [@van] do |f| %>
+    <%= f.association :van, prompt: "Select a van", input_html: {data: {controller: "tom-select"}} %>
+    <%= f.submit class: "btn btn-flat" %>
+  <% end %>

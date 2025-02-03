@@ -11,7 +11,7 @@
           <% if current_user.favourites.exists? %>
             <%= button_to "🩷", favourite_path(@van), method: :delete, class: "btn btn-heart" %>
           <% else %>
-            <%= button_to "🖤", van_favourite_path(@van), method: :post, class: "btn btn-heart" %>
+            <%= button_to "🖤", van_favourite_path(@van, current_user), method: :post, class: "btn btn-heart" %>
           <% end %>
       </div>
   </div>
