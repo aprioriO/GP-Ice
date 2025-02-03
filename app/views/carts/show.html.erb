@@ -2,20 +2,41 @@
   <div class="my-form">
     <h2>My Cart</h2>
 
-    <% if @order && @order.order_products.any? %>
-      <ul>
-        <% @order.order_products.each do |order_product| %>
-          <li>
-            <strong><%= order_product.product.name %></strong> -
-            Quantity: <%= order_product.quantity_ordered %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>Your cart is empty.</p>
-    <% end %>
-    <div>
-      <%= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-main" if @order %>
-    </div>
+    <%# if @order && @order.order_products.any? %>
+<!--       <ul> -->
+        <%# @order.order_products.each do |order_product| %>
+<!--           <li> -->
+<!--             <strong><%#= order_product.product.name %></strong> - -->
+<!--             Quantity: <%#= order_product.quantity_ordered %> -->
+<!--           </li> -->
+        <%# end %>
+<!--       </ul> -->
+    <%# else %>
+<!--       <p>Your cart is empty.</p> -->
+    <%# end %>
+<!--     <div> -->
+      <%#= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-main" if @order %>
+<!--     </div>
   </div>
-</div>
+</div> -->
+
+<% if @cart_items.present? %>
+  <% @cart_items.each do |order| %>
+    <h2>Van: <%= order.van.name %></h2>
+
+    <ul>
+      <% order.order_products.each do |order_product| %>
+        <li>
+          <strong><%= order_product.product.name %></strong> -
+          Quantity: <%= order_product.quantity_ordered %>
+          <%= link_to "Remove", remove_from_cart_path(order_product), method: :delete, class: "btn btn-danger btn-sm" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-success" if @order %>
+
+<% else %>
+  <p>Your cart is empty.</p>
+<% end %>
