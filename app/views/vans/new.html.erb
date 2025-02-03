@@ -12,6 +12,10 @@
         <%= f.input :location, label: "Location" %>
       </div>
 
+      <div>
+        <%= f.input :photo, as: :file, required: true %>
+      </div>
+
       <%= f.submit "Register", class: "btn-main" %>
     <% end %>
 

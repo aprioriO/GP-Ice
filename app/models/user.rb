@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
+  has_one_attached :image
   has_one :van
   has_many :orders
   has_many :favourites
@@ -14,7 +15,9 @@ class User < ApplicationRecord
 
   validates :email, :password, presence: true
 
+
   def van_owner?
     van.present?
   end
+
 end

@@ -30,6 +30,7 @@ puts "Creating Users"
     last_name: Faker::Name.last_name,
     photo: user_images_paths[i]
   )
+
 end
 puts "Users created successfully"
 # Create Unique Vans
