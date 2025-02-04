@@ -1,0 +1,44 @@
+.basket-card {
+  background-color: white;
+  width: 250px;
+  padding: 20px;
+  border-radius: 20px;
+  margin-right: 50px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
+
+  h2, h3 {
+    font-family: "Ultra", serif;
+    font-weight: 100;
+  }
+}
+
+.basket-checkout {
+  width: 60%;
+  background-color: white;
+  height: 500px;
+  align-content: center;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
+}
+
+.basket-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin: 50px auto;
+  max-width: 1500px;
+}
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .basket-card {
+    margin: 20px 20px;
+    width: 100%;
+  }
+
+  .basket-checkout {
+    margin: 20px 20px;
+    width: 100%;
+  }
+}
