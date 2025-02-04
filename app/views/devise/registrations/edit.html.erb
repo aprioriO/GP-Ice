@@ -12,7 +12,7 @@
   </div>
 </div>
 
- <div class="container-form">
+<div class="container-form">
   <div class="my-form">
     <h2>Check my Favorites Vans</h2>
     <br>
@@ -22,14 +22,15 @@
   </div>
 </div>
 
-
-
 <div class="container-form">
   <div class="my-form">
     <h2>See My Orders List</h2>
     <br>
     <div class="container">
       <%= link_to "My Orders", orders_path, class: "btn-main" %>
+    </div>
+  </div>
+</div>
 
 <% if current_user&&current_user.van %>
   <div class="container-form">
@@ -102,6 +103,7 @@
     </div>
     <br>
   </div>
+
   <div class="container">
     <%= link_to "< Back", :back, class: "btn-main" %>
   </div>
