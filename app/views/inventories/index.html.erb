@@ -1,18 +1,13 @@
-<div class="van-container">
-  <div class="van-show">
-
-    <div class="van-info">
-      <h1><%= @van.name%>`s store Inventories</h1>
+<div class="container-form">
+  <div class="my-form">
+    <div class="container">
+      <h2><%= @van.name%>`s store Inventories</h2>
       <p><strong>Driver Name:</strong> <%= @user.first_name %></p>
     </div>
-
-  </div>
-</div>
-
-<div class="van-container">
-  <div class="van-show">
-      <%= link_to "Add product to the list", new_van_inventory_path(@van), class: "btn-secondary" %>
-      <%= link_to "View your orders", van_orders_path(@van), class: "btn-secondary" %>
+    <div class="container">
+      <%= link_to "Add product to the list", new_van_inventory_path(@van), class: "btn-main" %>
+      <%= link_to "View your orders", van_orders_path(@van), class: "btn-main" %>
+    </div>
   </div>
 </div>
 
