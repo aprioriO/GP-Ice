@@ -15,6 +15,7 @@ body {
   justify-content: center;
   color: white;
 
+
   h1 {
     margin-left: auto;
     margin-right: auto;
@@ -29,6 +30,7 @@ body {
     font-weight: bold;
     font-style: normal;
     font-size: 40px;
+    margin-bottom: 50px;
   }
 
   .form {
@@ -49,6 +51,7 @@ body {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
   }
 
   input {
@@ -155,5 +158,21 @@ body {
     p {
       font-size: 30px;
     }
+  }
+}
+
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh; /* Makes it take up the full viewport height */
+  text-align: center; /* Ensures text is centred */
+  flex-direction: column; /* Ensures elements stack in the middle */
+  margin-top: 70px;
+}
+
+@media (min-width: 200px) and (max-width: 991.98px) {
+  .landing-page {
+    margin-top: 100px;
   }
 }
