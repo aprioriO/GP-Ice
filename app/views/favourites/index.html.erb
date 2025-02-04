@@ -5,8 +5,8 @@
     <% @favourites.each do |favourite| %>
       <% if favourite.van %>
         <li>
-          <%= favourite.van.name %>
-          <%= button_to "Remove from favourites", favourite_path(favourite), method: :delete %>
+          <%= link_to favourite.van.name, van_path(favourite.van) %>
+          <%= button_to "Remove from favourites", favourite_path(favourite), method: :delete, data: {turbo: false} %>
         </li>
       <% end %>
     <% end %>

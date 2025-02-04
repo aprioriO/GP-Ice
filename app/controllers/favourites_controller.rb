@@ -1,5 +1,5 @@
 class FavouritesController < ApplicationController
-  before_action :set_van, only: [:create, :destroy]
+  before_action :set_van, only: [:create]
 
   def index
     @user = current_user
@@ -13,8 +13,18 @@ class FavouritesController < ApplicationController
 
   def destroy
     @favourite = Favourite.find(params[:id])
+    set_van unless @favourite.van
+    @van = @favourite.van
     @favourite.destroy
-    redirect_back fallback_location: van_path, notice: "Removed from favourites."
+    # redirect_to van_path, notice: "Removed from favourites."
+
+    if request.referer.include?(van_path(@favourite.van))
+      redirect_to van_path(@favourite.van), notice: "Removed from favourites."
+    elsif request.referer.include?(favourites_path)
+      redirect_to favourites_path, notice: "Removed from favourites."
+    else
+      redirect_to root_path, alert: "Removed from favourites, but we couldn't determine the source page."
+    end
   end
 
   private
