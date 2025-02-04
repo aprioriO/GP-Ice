@@ -1,16 +1,24 @@
-<h1><%= current_user.first_name %>'s favourite vans</h1>
+<div class="btn-back">
+  <%= link_to "< Back to map", vans_path %>
+</div>
 
-<% if @favourites.any? %>
-  <ul>
-    <% @favourites.each do |favourite| %>
-      <% if favourite.van %>
-        <li>
-          <%= link_to favourite.van.name, van_path(favourite.van) %>
-          <%= button_to "Remove from favourites", favourite_path(favourite), method: :delete, data: {turbo: false} %>
-        </li>
+<div class="container-form">
+  <div class="my-form">
+    <h2><%= current_user.first_name %>'s favourite Vans</h2>
+    <div class="card">
+      <div class="card-header">
+        <p>Van</p>
+      </div>
+      <% if @favourites.any? %>
+        <% @favourites.each do |favourite| %>
+          <div class="card-details">
+            <p><%= link_to favourite.van.name, van_path(favourite.van) %></p>
+            <p><%= button_to "Remove", favourite_path(favourite), method: :delete, data: {turbo: false}, class: "btn-main" %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No vans in your favourites list.</p>
       <% end %>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No vans in your favourites list.</p>
-<% end %>
+    </div>
+  </div>
+</div>
