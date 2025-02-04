@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :vans, only: %i[index show new create] do
-    resources :reviews, only: %i[index new create]
+    resources :reviews, only: %i[index]
     get "tracking" => "vans#tracking", as: :tracking
     get "orders" => "vans#orders", as: :orders
     get "products/:id" => "products#show", as: :product
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   delete "cart/clear", to: "order_products#clear", as: :clear_cart
 
   resources :orders, only: %i[index show new create] do
+    resources :reviews, only: %i[index new create show]
     get "checkout", to: "orders#checkout", as: :checkout
   end
 

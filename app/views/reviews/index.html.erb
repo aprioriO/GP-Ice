@@ -1,0 +1,19 @@
+<h1 class="text-center my-4">Reviews </h1>
+<div class="container">
+  <% @reviews.each do |review| %>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">
+          <strong>User: <%= review.order.user.first_name %></strong>
+        </h5>
+        <hr class="my-3">
+        <p class="card-text"><%= review.content %></p>
+        <p>
+          <strong>
+            <%= "⭐" * review.rating %>
+          </strong>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

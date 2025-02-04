@@ -1,0 +1,31 @@
+<h1 class="text-center my-4">New Review</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4">
+        <div class="card-body">
+          <%= simple_form_for [@order, @review], data: { turbo: false }, html: { class: "needs-validation" } do |f| %>
+
+            <div class="mb-3">
+              <%= f.input :content, label: "Review Content", input_html: { class: "form-control" } %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.input :rating, label: "Rating (1-5)", input_html: { class: "form-control", type: "number", min: 1, max: 5 } %>
+            </div>
+
+            <div class="d-grid gap-2">
+              <%= f.button :submit, class: "btn btn-primary" %>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <%= link_to "Back to Orders", orders_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
