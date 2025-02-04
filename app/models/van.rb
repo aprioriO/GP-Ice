@@ -5,7 +5,7 @@ class Van < ApplicationRecord
   has_many :favourited_users, through: :favourites, source: :user
   has_many :inventories
   has_many :products, through: :inventories
-  has_one_attached :image
+  has_one_attached :photo
 
   validates :name, presence: true, uniqueness: true
   validates :location, presence: true

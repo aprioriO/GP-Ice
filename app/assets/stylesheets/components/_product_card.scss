@@ -69,6 +69,10 @@ ul {
   display: flex;
   flex-direction: column;
 
+  button {
+    font-size: 30px;
+  }
+
   h1 {
     font-family: "Ultra", serif;
     color: rgb(255, 255, 255);
