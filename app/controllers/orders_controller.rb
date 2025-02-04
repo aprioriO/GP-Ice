@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.where(user_id: current_user)
     @vans = @orders.map(&:van).uniq
     if params[:van_id].present?
       @selected_van = Van.find(params[:van_id])
