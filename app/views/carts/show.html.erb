@@ -6,7 +6,7 @@
       <% if @cart_items.any? { |order| order.order_products.any? } %>
         <% @cart_items.each do |order| %>
           <% if order.order_products.any? %>
-            <h2>Van: <%= order.van.name %></h2>
+            <h2><%= order.van.name %></h2>
 
             <ul>
               <% order.order_products.each do |order_product| %>
