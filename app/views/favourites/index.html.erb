@@ -6,14 +6,14 @@
   <div class="my-form">
     <h2><%= current_user.first_name %>'s favourite Vans</h2>
     <div class="card">
-      <div class="card-header">
-        <p>Van</p>
+      <div class="card">
+        <p>Check the Van's Store</p>
       </div>
       <% if @favourites.any? %>
         <% @favourites.each do |favourite| %>
-          <div class="card-details">
-            <p><%= link_to favourite.van.name, van_path(favourite.van) %></p>
-            <p><%= button_to "Remove", favourite_path(favourite), method: :delete, data: {turbo: false}, class: "btn-main" %></p>
+          <div class="card-details card-favourite">
+            <div><%= link_to favourite.van.name, van_path(favourite.van), class: "btn-main" %></div>
+            <div><%= button_to "Remove", favourite_path(favourite), method: :delete, data: {turbo: false}, class: "btn-main" %></div>
           </div>
         <% end %>
       <% else %>
