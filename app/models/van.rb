@@ -1,7 +1,7 @@
 class Van < ApplicationRecord
   belongs_to :user
   has_many :orders
-  has_many :reviews, dependent: :destroy
+  has_many :reviews
   has_many :favourites
   has_many :favourited_users, through: :favourites, source: :user
   has_many :inventories
