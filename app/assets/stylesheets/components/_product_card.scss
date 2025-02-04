@@ -114,7 +114,7 @@ ul {
 }
 
 
-@media (min-width: 200px) and (max-width: 991.98px) {
+@media (min-width: 200px) and (max-width: 1600.98px) {
   .product-card {
     flex-direction: column;
 
@@ -132,7 +132,7 @@ ul {
 
   .product-info span {
     display: block;
-    margin-top: 20px; /* Optional: Adds some spacing */
+    margin-top: 20px;
   }
 }
 

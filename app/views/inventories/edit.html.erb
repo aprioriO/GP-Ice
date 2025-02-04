@@ -1,16 +1,18 @@
-<div class="my-container">
-  <h1>Please, amend the <%= @inventory.product.name %> product details</h1>
-  <div class="container">
+<div class="container-form">
+  <div class="my-form">
+  <h1><%= @inventory.product.name %> product details</h1>
+
     <%= simple_form_for [@van, @inventory] do |f| %>
       <%= f.hidden_field :product_id, value: @inventory.product.id, placeholder: "Product_id" %>
       <%= f.input :quantity_available, placeholder: "Quantity Available" %>
       <%= f.input :price, placeholder: "Price" %>
       <%= f.submit class: "btn btn-main" %>
     <% end %>
-  </div>
+
 
   <br>
   <div>
     <%= link_to "< Back to store", van_inventories_path(@van), class: "btn-main" %>
+  </div>
   </div>
 </div>
