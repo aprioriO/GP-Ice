@@ -8,7 +8,7 @@ class OrderProductsController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @van = @product.inventories.first.van
+    @van = Van.find(params[:order][:van_id])
 
     @order = Order.find_or_create_by(user: current_user, van: @van, confirmed_status: false, status: "pending")
     @order_product = @order.order_products.find_or_initialize_by(product: @product)
@@ -21,7 +21,6 @@ class OrderProductsController < ApplicationController
       redirect_to van_path(@van), alert: "Failed to add product."
     end
   end
-
 
   def destroy
     order_product = OrderProduct.find(params[:id])
