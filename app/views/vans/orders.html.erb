@@ -33,13 +33,13 @@
           <div class="actions">
             <div class="check-action">
               <% if order.confirmed_status == false %>
-                <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-confirm' %>
+                <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-main' %>
               <% end %>
             </div>
           </div>
           <div class="actions">
             <div class="check-action">
-              <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-cancel' %>
+              <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-delete' %>
             </div>
           </div>
         </div>
