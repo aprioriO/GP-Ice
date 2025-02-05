@@ -54,7 +54,7 @@ puts "Vans created successfully"
 # Create Favourites
 puts "Creating Favourites"
 favourites = []
-5.times do |i|
+5.times do
   favourites << Favourite.create!(
     user_id: users.sample.id,
     van_id: vans.sample.id

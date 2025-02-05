@@ -4,7 +4,6 @@ class CreateInventories < ActiveRecord::Migration[7.1]
       t.references :product, null: false, foreign_key: true
       t.references :van, null: false, foreign_key: true
       t.integer :quantity_available
-      t.integer :price
 
       t.timestamps
     end
