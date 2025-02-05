@@ -3,41 +3,46 @@
     <h2>Customer requests for <%= @van.name %>'s Van</h2>
     <div class="card">
       <div class="card-header">
-        <p>Order ID</p>
+        <p>Order</p>
         <p>User</p>
         <p>Confirmed</p>
         <p>Paid</p>
-        <p>Created At</p>
-        <p>Actions</p>
+        <p>Order Placed</p>
+        <p>Confirmation</p>
+        <p>Cancellation</p>
       </div>
       <% @orders.each do |order| %>
         <div class="card-details">
           <p><%= order.id %></p>
-          <p><%= order.user_id %></p>
-          <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-            <% if order.paid_status  == true %>
-            <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+          <p><%= order.user.email %></p>
+          <div>
+            <% if order.confirmed_status == true %>
+              <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
             <% else %>
-            <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+              <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
             <% end %>
+          </div>
+          <div>
+          <% if order.paid_status  == true %>
+            <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+          <% else %>
+            <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+          <% end %>
+          </div>
           <p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
           <div class="actions">
-            <div>
-              <% unless order.confirmed_status %>
-              <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-confirm' %>
-            <% end %>
             <div class="check-action">
-            <% if order.confirmed_status == true %>
-            <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-            <% end %>
+              <% if order.confirmed_status == false %>
+                <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-main' %>
+              <% end %>
             </div>
-            </div>
-            <div>
-            <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-cancel' %>
+          </div>
+          <div class="actions">
+            <div class="check-action">
+              <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-delete' %>
             </div>
           </div>
         </div>
       <% end %>
-    </div>
   </div>
 </div>

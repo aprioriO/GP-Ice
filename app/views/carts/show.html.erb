@@ -1,6 +1,5 @@
-<body class="bodyApp">
-  <div class="container-form">
-    <div class="my-form">
+<div class="container-form">
+  <div class="my-form">
       <h2>My Cart</h2>
 
       <% if @cart_items.any? { |order| order.order_products.any? } %>
@@ -11,15 +10,30 @@
             <ul>
               <% order.order_products.each do |order_product| %>
                 <li>
-                  <strong><%= order_product.product.name %></strong> -
-                  Quantity: <%= order_product.quantity_ordered %>
-                  <%= button_to "Remove", remove_from_cart_path(order_product), method: :delete, class: "btn-delete", data: { turbo_confirm: "Are you sure?" } %>
+                  <div class="cart-items">
+                      <div class="cart-product">
+
+                          <div class ="cart-info">
+                            <h3><strong><%= order_product.product.name %></strong></h3>
+                            <p>Quantity: <%= order_product.quantity_ordered %></p>
+                          </div>
+
+                          <%= image_tag order_product.product.photo %>
+
+                      </div>
+                    <div class="cart-delete">
+                      <%= button_to remove_from_cart_path(order_product), method: :delete, class: "btn-delete", data: { turbo_confirm: "Are you sure?" } do %>
+                        <i class="fa-solid fa-trash"></i>
+                      <% end %>
+                    </div>
+                  </div>
+
                 </li>
               <% end %>
             </ul>
 
-            <%= link_to "Proceed to Checkout", order_checkout_path(order), class: "btn btn-success" %>
-
+            <%= link_to "Proceed to Checkout", order_checkout_path(order), class: "btn-main" %>
+            <hr class="product-line">
           <% end %>
         <% end %>
 
@@ -28,4 +42,3 @@
       <% end %>
     </div>
   </div>
-</body>
