@@ -5,7 +5,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   has_one_attached :image
-  has_one :van
+  has_one :van, dependent: :destroy
   has_many :orders
   has_many :favourites
   has_many :favourite_vans, through: :favourites, source: :van

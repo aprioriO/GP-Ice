@@ -13,11 +13,11 @@ User.destroy_all
 users = []
 
 user_images_paths = [
-  "icecream_van_1.png",
-  "icecream_van_2.png",
-  "icecream_van_3.png",
-  "icecream_van_4.png",
-  "icecream_van_5.png"
+  *Array.new(10, "icecream_van_1.png"),
+  *Array.new(10, "icecream_van_2.png"),
+  *Array.new(10, "icecream_van_3.png"),
+  *Array.new(10, "icecream_van_4.png"),
+  *Array.new(15, "icecream_van_5.png")
 ]
 puts "Creating Users"
 
@@ -151,7 +151,7 @@ vans.each do |van|
     inventories << Inventory.create!(
       product_id: product.id,
       van_id: van.id,
-      quantity_available: 10,
+      quantity_available: rand(10..50),
       price: Faker::Commerce.price(range: 1..10)
     )
   end
