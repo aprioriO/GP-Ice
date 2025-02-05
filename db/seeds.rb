@@ -54,7 +54,7 @@ puts "Vans created successfully"
 # Create Favourites
 puts "Creating Favourites"
 favourites = []
-5.times do |i|
+5.times do
   favourites << Favourite.create!(
     user_id: users.sample.id,
     van_id: vans.sample.id
@@ -72,7 +72,6 @@ ice_cream_descriptions = [
   "Fresh with chunks of chocolate for a delightful crunch.",
   "Decadent and filled with chunks of chewy cookie dough."
 ]
-
 
 asset_image_paths = [
   "01_vanilla.png",
@@ -101,7 +100,7 @@ vans.each do |van|
       product_id: product.id,
       van_id: van.id,
       quantity_available: 10,
-      price: Faker::Commerce.price(range: 1.0..10.0)
+      price: Faker::Commerce.price(range: 1..10)
     )
   end
 end
