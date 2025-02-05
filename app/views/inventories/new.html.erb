@@ -10,7 +10,7 @@
         <%= f.association :product, prompt: "Select a product", input_html: {data: {controller: "tom-select"}} %>
         <%= f.input :quantity_available, placeholder: "Quantity Available" %>
         <%= f.input :price, placeholder: "Price" %>
-        <%= f.submit class: "btn btn-main" %>
+        <%= f.submit "Add Product", class: "btn btn-main" %>
       <% end %>
     </div>
   </div>
