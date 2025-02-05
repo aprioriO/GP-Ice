@@ -1,12 +1,12 @@
-<h1 class="text-center my-4">Reviews </h1>
+<h2 class="text-center my-4"><%= @van.name %> Reviews </h2>
 <div class="container">
   <% @reviews.each do |review| %>
     <div class="card mb-4">
       <div class="card-body">
         <h5 class="card-title">
-          <strong>User: <%= review.order.user.first_name %></strong>
+          <strong><%= review.order.user.first_name %></strong>
         </h5>
-        <hr class="my-3">
+        <hr class="product-line">
         <p class="card-text"><%= review.content %></p>
         <p>
           <strong>
