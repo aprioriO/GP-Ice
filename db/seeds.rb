@@ -73,7 +73,6 @@ ice_cream_descriptions = [
   "Decadent and filled with chunks of chewy cookie dough."
 ]
 
-
 asset_image_paths = [
   "01_vanilla.png",
   "02_chocolate.png",
@@ -101,7 +100,7 @@ vans.each do |van|
       product_id: product.id,
       van_id: van.id,
       quantity_available: 10,
-      price: Faker::Commerce.price(range: 1.0..10.0)
+      price: Faker::Commerce.price(range: 1..10)
     )
   end
 end
