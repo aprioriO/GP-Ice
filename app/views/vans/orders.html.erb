@@ -27,13 +27,13 @@
               <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-confirm' %>
             <% end %>
             <div class="check-action">
-            <% if order.confirmed_status == true %>
-            <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-            <% end %>
+              <% if order.confirmed_status == true %>
+              <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+              <% end %>
             </div>
             </div>
             <div>
-            <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-cancel' %>
+              <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-cancel' %>
             </div>
           </div>
         </div>
