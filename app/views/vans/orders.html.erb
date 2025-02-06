@@ -1,48 +1,51 @@
-<div class="container-form">
+<div class="my-container">
   <div class="my-form">
-    <h2>Customer requests for <%= @van.name %>'s Van</h2>
-    <div class="card">
-      <div class="card-header">
-        <p>Order</p>
-        <p>User</p>
-        <p>Confirmed</p>
-        <p>Paid</p>
-        <p>Order Placed</p>
-        <p>Confirmation</p>
-        <p>Cancellation</p>
-      </div>
-      <% @orders.each do |order| %>
-        <div class="card-details">
-          <p><%= order.id %></p>
-          <p><%= order.user.email %></p>
-          <div>
-            <% if order.confirmed_status == true %>
-              <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-            <% else %>
-              <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
-            <% end %>
-          </div>
-          <div>
-          <% if order.paid_status  == true %>
-            <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-          <% else %>
-            <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
-          <% end %>
-          </div>
-          <p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-          <div class="actions">
-            <div class="check-action">
-              <% if order.confirmed_status == false %>
-                <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-main' %>
+    <h2 class="my-4">Customer requests for <%= @van.name %></h2>
+      <div class="card-van-requests">
+        <div class="card-header-van-requests">
+          <p>Order</p>
+          <p>User</p>
+          <p>Confirmed</p>
+          <p>Paid</p>
+          <p>Order Placed</p>
+          <p>Confirmation</p>
+          <p>Cancellation</p>
+        </div>
+
+        <% @orders.each do |order| %>
+          <div class="card-details-van-requests">
+            <p><%= order.id %></p>
+            <p><%= order.user.email %></p>
+            <div>
+              <% if order.confirmed_status == true %>
+                <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+              <% else %>
+                <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
               <% end %>
             </div>
-          </div>
-          <div class="actions">
-            <div class="check-action">
-              <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-delete' %>
+             <div>
+              <% if order.paid_status  == true %>
+                 <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+              <% else %>
+                <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+              <% end %>
             </div>
-          </div>
-        </div>
-      <% end %>
+
+            <%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
+              <div class="actions-van-requests">
+                <div class="check-action-van-requests">
+                  <% if order.confirmed_status == false %>
+                    <%= button_to 'Confirm', van_order_path(order.van, order), method: :patch, class: 'btn btn-main' %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="actions-van-requests">
+                <div class="check-action-van-requests">
+                  <%= button_to 'Cancel', van_order_path(order.van, order), method: :delete, class: 'btn btn-delete' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
   </div>
 </div>
