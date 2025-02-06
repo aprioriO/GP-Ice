@@ -51,18 +51,15 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to van_orders_path(@order.van), notice: 'Order deleted.'
   end
 
-
   def checkout
     @order = Order.find(params[:order_id])
     if @order.update(paid_status: true)
-      flash[:notice] = "Order successfully checked out!"
       render :checkout
     else
       redirect_to order_path(@order), alert: "Checkout failed."
