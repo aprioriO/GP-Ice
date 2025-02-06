@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 5px double $pink;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
 
   h2, h3 {
     font-family: "Ultra", serif;
@@ -20,11 +22,18 @@
 .basket-checkout {
   width: 60%;
   background-color: white;
-  height: 600px;
+  height: 100%;
   align-content: center;
-  text-align: center;
+  text-align: left;
   border-radius: 20px;
+  border: 5px double $pink;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
+
+  p, label {
+    font-family: "Nunito", serif;
+    font-weight: bold;
+    font-style: normal;
+  }
 }
 
 .basket-container {
