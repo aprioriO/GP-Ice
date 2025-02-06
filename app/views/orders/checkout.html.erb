@@ -16,22 +16,49 @@
           <% total_price += inventory.price * order_product.quantity_ordered %>
         <% end %>
 
-              <% if inventory %>
-                <li>
-                  <strong><%= order_product.quantity_ordered %>x</strong>
-                  <strong><%= order_product.product.name %></strong>
-                  <strong>£<%= inventory.price * order_product.quantity_ordered %></strong>
-                </li>
-              <% end %>
+        <% if inventory %>
+          <li>
+            <strong><%= order_product.quantity_ordered %>x</strong>
+            <strong><%= order_product.product.name %></strong>
+            <strong>£<%= inventory.price * order_product.quantity_ordered %></strong>
+          </li>
         <% end %>
-        <hr class="product-line">
+      <% end %>
+      <hr class="product-line">
     </ul>
 
-      <h3><strong>Total £<%= total_price %></strong></h3>
+    <h3><strong>Total £<%= total_price %></strong></h3>
   </div>
 
   <div class="basket-checkout">
-    <%= link_to "Checkout", "#", class: "btn-main" %>
+    <form>
+      <div class="payment-form">
+        <label>Credit Card Number:</label>
+        <input type="text" class="form-control" placeholder="Enter card number" required>
+
+        <label>CVC:</label>
+        <input type="text" class="form-control" placeholder="Enter CVC" required>
+
+        <label>Post Code:</label>
+        <input type="text" class="form-control" placeholder="Enter Post Code" required>
+
+        <label>Expiry Date:</label>
+        <div class="expiry-date">
+          <select class="form-control">
+            <% (1..12).each do |month| %>
+              <option value="<%= month %>"><%= Date::MONTHNAMES[month] %></option>
+            <% end %>
+          </select>
+          <select class="form-control">
+            <% (Date.today.year..(Date.today.year + 10)).each do |year| %>
+              <option value="<%= year %>"><%= year %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-main">Checkout</button>
+      </div>
+    </form>
   </div>
 
 </div>
