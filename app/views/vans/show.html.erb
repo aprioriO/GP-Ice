@@ -21,9 +21,9 @@
         <p>⭐⭐⭐⭐⭐</p>
         <p><%= link_to "See Reviews", van_reviews_path(@van), class: "btn btn-main" %></p>
           <% if @favourite %>
-            <%= button_to "🩷", favourite_path(@favourite, van_id: @van.id), method: :delete, class: "btn btn-heart" %>
+            <%= button_to "🩷", favourite_path(@favourite, van_id: @van.id), method: :delete, class: "btn-heart" %>
           <% else %>
-            <%= button_to "🖤", favourites_path(van_id: @van.id), method: :post, class: "btn btn-heart" %>
+            <%= button_to "🖤", favourites_path(van_id: @van.id), method: :post, class: "btn-heart" %>
           <% end %>
       </div>
   </div>

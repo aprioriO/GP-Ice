@@ -22,14 +22,17 @@
   border: 2px solid rgb(255, 255, 255);
   border-radius: 20px;
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: #F98A90;
   font-family: "Nunito", serif;
   transition: 0.3s ease;
   margin-right: 5px;
+  background-color: white;
 
   &:hover {
     background-color: $pink;
     padding: 10px 25px;
+    border: 2px solid $pink;
+    color: white;
   }
 }
 

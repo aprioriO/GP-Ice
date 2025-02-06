@@ -1,6 +1,11 @@
+<div class="container1">
+  <div class="container2">
+  <h2 class="white-title">My Cart</h2>
+  </div>
+</div>
+
 <div class="container-form">
   <div class="my-form">
-      <h2>My Cart</h2>
 
       <% if @cart_items.any? { |order| order.order_products.any? } %>
         <% @cart_items.each do |order| %>
