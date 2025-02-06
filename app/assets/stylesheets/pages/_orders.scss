@@ -41,12 +41,12 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .container {
     width: 500px;
   }
   .card-header-van-requests, .card-details-van-requests {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   p {
