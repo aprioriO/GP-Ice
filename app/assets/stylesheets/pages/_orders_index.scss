@@ -14,8 +14,8 @@
 }
 
 .select-van {
-  width: 300px; /* Example: Set a fixed width */
-  margin-bottom: 20px; /* Example: Additional bottom margin */
+  width: 300px;
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -24,14 +24,13 @@ h3 {
 
 .card-header, .card-details {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-  align-items: center;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  gap: 0.4rem;
+  place-items: center;
 }
 
 .card-header {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
   background-color: #f8f8f8;
   color: #333;
   padding: 1rem;
@@ -93,21 +92,52 @@ h3 {
   margin-left: 20px ;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 960px) {
+  .container {
+    width: 700px;
+  }
   .card-header, .card-details {
     grid-template-columns: repeat(3, 1fr);
   }
-}
 
-@media (max-width: 480px) {
-  .card-header, .card-details {
-    grid-template-columns: repeat(2, 1fr);
+  p {
+    font-size: 0.8rem;
+  };
+
+  .card-details .btn{
+    font-size: 0.8rem;
+  }
+  .card-details p {
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 480px) {
-  .check-action {
-    margin-left: 0;
-    justify-content: flex-start;
+@media (max-width: 720px) {
+  .container {
+    width: 500px;
+  }
+  .card-header, .card-details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  p {
+    font-size: 0.8rem;
+  };
+
+  .card-details .btn{
+    font-size: 0.8rem;
+  }
+  .card-details p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    width: 500px;
+  }
+  .select-van {
+    width: 60%;
   }
 }

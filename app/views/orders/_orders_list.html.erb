@@ -2,25 +2,18 @@
   <% orders.each do |order| %>
     <div class="card-details">
       <p><%= order.id %></p>
-
-      <p><%= link_to "#{order.van.name.truncate(7)}", van_path(order.van_id), data: { turbo: false }  %></p>
-      <p><%= order.confirmed_status %></p>
-      <p><%= order.paid_status %></p>
-
-      <p><%= order.van_id %></p>
       <% if order.confirmed_status  == true %>
         <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
       <% else %>
         <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
       <% end %>
-       <% if order.paid_status  == true %>
-          <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-        <% else %>
-          <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
-        <% end %>
-
+      <% if order.paid_status  == true %>
+        <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+      <% else %>
+        <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+      <% end %>
       <p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-
+      <p><%= link_to "#{order.van.name.truncate(10)}", van_path(order.van_id), data: { turbo: false }, class:"btn btn-main" %></p>
       <% if order.confirmed_status == true && order.review.blank? %>
         <%= form_with(url: new_order_review_path(order), method: :get, local: true) do |f| %>
           <%= hidden_field_tag :order_id, order.id %>
