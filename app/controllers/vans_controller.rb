@@ -43,6 +43,7 @@ class VansController < ApplicationController
     @inventories = @van.inventories.includes(:product)
     @favourite = Favourite.find_by(van: @van, user: current_user)
     # @product = @inventories.find_by(product_id: params[:id])
+    @reviews = Review.all
   end
 
   def tracking
@@ -62,5 +63,12 @@ class VansController < ApplicationController
 
   def van_params
     params.require(:van).permit(:name, :location, :photo)
+  end
+
+  def modal
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end

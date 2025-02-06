@@ -177,6 +177,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jquery (0.0.1)
     json (2.9.1)
     logger (1.6.5)
     loofah (2.24.0)
@@ -359,6 +360,7 @@ DEPENDENCIES
   geocoder
   importmap-rails (~> 1.2.3)
   jbuilder
+  jquery
   ostruct
   pg (~> 1.1)
   puma (>= 5.0)
