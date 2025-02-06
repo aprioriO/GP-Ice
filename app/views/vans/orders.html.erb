@@ -1,4 +1,7 @@
-<div class="container1">
+<div class="container">
+  <div class="btn-back">
+    <%= link_to "< back to my store", van_inventories_path(params[:van_id]) %>
+  </div>
   <div class="container2">
     <h2 class="white-title my-4">Customer requests for <%= @van.name %></h2>
       <div class="card-van-requests">
@@ -12,24 +15,24 @@
           <p>Cancellation</p>
         </div>
 
-        <% @orders.each do |order| %>
-          <div class="card-details-van-requests">
-            <p><%= order.id %></p>
-            <p><%= order.user.email %></p>
-            <div>
-              <% if order.confirmed_status == true %>
-                <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-              <% else %>
-                <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
-              <% end %>
-            </div>
-            <div>
-              <% if order.paid_status  == true %>
-                <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
-              <% else %>
-                <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
-              <% end %>
-            </div>
+          <% @orders.each do |order| %>
+            <div class="card-details-van-requests">
+              <p><%= order.id %></p>
+              <p><%= order.user.email %></p>
+              <div>
+                <% if order.confirmed_status == true %>
+                  <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+                <% else %>
+                  <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+                <% end %>
+              </div>
+              <div>
+                <% if order.paid_status  == true %>
+                  <p class="fa-checkmark"><i class="fa-solid fa-check fa-lg"></i></p>
+                <% else %>
+                  <p class="fa-cross"><i class="fa-solid fa-times fa-lg"></i></p>
+                <% end %>
+              </div>
 
             <%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
               <div class="actions-van-requests">
@@ -46,6 +49,7 @@
               </div>
             </div>
           <% end %>
+
+
       </div>
   </div>
-</div>
