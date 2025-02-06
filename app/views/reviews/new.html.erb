@@ -1,9 +1,13 @@
-<h1 class="text-center my-4">New Review</h1>
+   <div class="btn-back">
+        <%= link_to "< Back to Orders", orders_path %>
+      </div>
+
+<h1 class="text-center my-4 white-title">New Review</h1>
 
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card shadow-sm p-4">
+      <div class="container-form">
         <div class="card-body">
           <%= simple_form_for [@order, @review], data: { turbo: false }, html: { class: "needs-validation" } do |f| %>
 
@@ -16,16 +20,13 @@
             </div>
 
             <div class="d-grid gap-2">
-              <%= f.button :submit, class: "btn btn-primary" %>
+              <%= f.button :submit, class: "btn btn-main" %>
             </div>
 
           <% end %>
         </div>
       </div>
 
-      <div class="text-center mt-3">
-        <%= link_to "Back to Orders", orders_path, class: "btn btn-outline-secondary" %>
-      </div>
     </div>
   </div>
 </div>
