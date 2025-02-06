@@ -3,7 +3,7 @@
     <%= link_to "< back to homepage", root_path%>
   </div>
   <div class="my-form">
-    <h2>Orders</h2>
+    <h2 class ="white-title mb-4">Orders</h2>
     <div class="card">
       <div class="select-van mb-3 mx-3">
         <%= form_with url: orders_path, method: :get, data: { turbo_frame: "orders_list" } do |form| %>

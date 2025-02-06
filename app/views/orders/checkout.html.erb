@@ -1,5 +1,5 @@
-<div class="my-container">
-  <%= link_to "All my orders", orders_path, class: "btn-main" %>
+<div class="btn-back">
+  <%= link_to "< All my orders", orders_path %>
 </div>
 
 <div class="basket-container">
@@ -7,8 +7,8 @@
   <div class="basket-card">
     <% total_price = 0 %>
 
-    <h2>Order Summary:</h2>
     <ul>
+      <h2>Order Summary:</h2>
       <% @order.order_products.each do |order_product| %>
         <% inventory = Inventory.find_by(product_id: order_product.product_id, van_id: @order.van_id) %>
 
@@ -24,39 +24,45 @@
           </li>
         <% end %>
       <% end %>
-      <hr class="product-line">
     </ul>
-
-    <h3><strong>Total £<%= total_price %></strong></h3>
+    <div>
+      <hr class="product-line">
+      <h3><strong>Total £<%= total_price %></strong></h3>
+    </div>
   </div>
 
   <div class="basket-checkout">
     <form>
-      <div class="payment-form">
-        <label>Credit Card Number:</label>
-        <input type="text" class="form-control" placeholder="Enter card number" required>
+      <div class="payment-form p-5">
+        <div class="row">
+          <label>Full Name</label>
+          <input type="text" class="form-control mb-3" placeholder="Enter Full Name" required>
 
-        <label>CVC:</label>
-        <input type="text" class="form-control" placeholder="Enter CVC" required>
+          <label>Credit Card Number:</label>
+          <input type="text" class="form-control" placeholder="Enter card number" maxlength="16" pattern="\d{16}" required>
 
-        <label>Post Code:</label>
-        <input type="text" class="form-control" placeholder="Enter Post Code" required>
+          <label>CVC:</label>
+          <input type="text" class="form-control" placeholder="Enter CVV" maxlength="3" pattern="\d{3}" required>
 
-        <label>Expiry Date:</label>
-        <div class="expiry-date">
-          <select class="form-control">
-            <% (1..12).each do |month| %>
-              <option value="<%= month %>"><%= Date::MONTHNAMES[month] %></option>
-            <% end %>
-          </select>
-          <select class="form-control">
-            <% (Date.today.year..(Date.today.year + 10)).each do |year| %>
-              <option value="<%= year %>"><%= year %></option>
-            <% end %>
-          </select>
+          <label>Post Code:</label>
+          <input type="text" class="form-control" placeholder="Enter Post Code" maxlength="8" pattern="\d{8}" required>
+
+          <label>Expiry Date:</label>
+          <div class="expiry-date">
+            <select class="form-control mb-3">
+              <% (1..12).each do |month| %>
+                <option value="<%= month %>"><%= Date::MONTHNAMES[month] %></option>
+              <% end %>
+            </select>
+            <select class="form-control mb-3">
+              <% (Date.today.year..(Date.today.year + 10)).each do |year| %>
+                <option value="<%= year %>"><%= year %></option>
+              <% end %>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-main">Checkout</button>
         </div>
-
-        <button type="submit" class="btn-main">Checkout</button>
       </div>
     </form>
   </div>

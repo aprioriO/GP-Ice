@@ -2,13 +2,13 @@
   <div class="inventory-card">
 
     <div>
-      <h2><%= @van.name%>`s Inventory</h2>
-      <p><strong>Driver Name:</strong> <%= @user.first_name %></p>
+      <h2 class="white-title"><%= @van.name%>`s Inventory</h2>
+      <p class="white-text"><strong>Driver Name:</strong> <%= @user.first_name %></p>
     </div>
 
     <div class="button-inventory">
-      <%= link_to "Add product to the list", new_van_inventory_path(@van), class: "btn-main" %>
-      <%= link_to "View your orders", van_orders_path(@van), class: "btn-main" %>
+      <%= link_to "Add product", new_van_inventory_path(@van), class: "btn-secondary" %>
+      <%= link_to "View orders", van_orders_path(@van), class: "btn-secondary" %>
     </div>
 
   </div>
@@ -18,7 +18,7 @@
   <div class="my-container">
     <% if @inventories.empty? %>
       <div class="container">
-        <p>No products available in this van.</p>
+        <p class="white-text">No products available in this van.</p>
       </div>
 
     <% else %>
