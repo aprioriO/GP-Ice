@@ -13,6 +13,12 @@
     <%= link_to "Register", new_van_path, class: "btn-profile" %>
     <hr class="product-line">
 
+    <% if current_user&&current_user.van %>
+      <h5>Customer Orders</h5>
+      <%= link_to "Requests", van_orders_path(current_user.van), class: "btn-profile" %>
+      <hr class="product-line">
+    <%end %>
+
     <h5>Favourite Vans</h5>
     <%= link_to "Favourites", favourites_path, class: "btn-profile" %>
     <hr class="product-line">
@@ -20,13 +26,7 @@
     <h5>My Orders</h5>
     <%= link_to "My Orders", orders_path, class: "btn-profile" %>
     <hr class="product-line">
-
-    <% if current_user&&current_user.van %>
-      <h5>Customer Orders</h5>
-      <%= link_to "Requests", van_orders_path(current_user.van), class: "btn-profile" %>
-      <hr class="product-line">
-    <%end %>
-
+    
     <h5>My Account</h5>
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn-delete" %>
     <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn-delete" %>
