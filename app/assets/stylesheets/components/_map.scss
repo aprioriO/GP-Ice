@@ -25,3 +25,26 @@
     font-size: 20px;
   }
 }
+
+
+.map-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 20px;
+  margin: 20px auto; /* Centres the element horizontally */
+  border-radius: 40px;
+  max-width: 1800px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
+  border: 5px double $pink;
+}
+
+
+@media (min-width: 200px) and (max-width: 1800px) {
+  .map-container {
+    margin: 20px;
+  }
+
+}
