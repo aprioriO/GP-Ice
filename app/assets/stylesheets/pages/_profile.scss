@@ -8,7 +8,9 @@
 
   h5 {
     font-family: "Ultra", serif;
-    color: rgb(0, 0, 0);
+    font-weight: 100;
+    color: #F98A90;
+    letter-spacing: .1rem;
   }
 }
 
@@ -21,7 +23,9 @@
 
   h2 {
     font-family: "Ultra", serif;
-    color: rgb(0, 0, 0);
+    font-weight: 100;
+    color: #F98A90;
+    letter-spacing: .1rem;
   }
 
   input, label {
@@ -38,6 +42,9 @@
 
   h1 {
     font-family: "Ultra", serif;
+    color: rgb(255, 255, 255);
+    font-weight: 100;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.275);
   }
 }
 

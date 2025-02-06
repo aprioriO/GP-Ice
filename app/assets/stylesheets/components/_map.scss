@@ -5,12 +5,19 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+
+  a {
+    text-decoration: none;
+    color: #F98A90;
+  }
 }
 
 #map-title {
   text-align: center;
-  font-size: 40px;
-  margin-bottom: 30px;
+  font-weight: 100;
+  color: #F98A90;
+  letter-spacing: .1rem;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 200px) and (max-width: 991.98px) {
