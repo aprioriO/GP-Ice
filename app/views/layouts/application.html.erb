@@ -19,6 +19,11 @@
   </head>
 
   <body class="bodyApp">
+    <% if flash[:alert] %>
+      <div class="alert alert-warning">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <div class="main-content">

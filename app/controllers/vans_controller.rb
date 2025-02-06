@@ -1,7 +1,7 @@
 class VansController < ApplicationController
-
+  before_action :authenticate_user!, only: [:show]
   before_action :van_find, only: [:show]
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [ :index]
 
   def orders
     @van = Van.find(params[:van_id])
