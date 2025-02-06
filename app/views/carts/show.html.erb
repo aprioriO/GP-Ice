@@ -9,9 +9,8 @@
 
       <% if @cart_items.any? { |order| order.order_products.any? } %>
         <% @cart_items.each do |order| %>
-          <% if order.order_products.any? %>
+          <% if order.order_products.any? && order.paid_status == false %>
             <h2><%= order.van.name %></h2>
-
             <ul>
               <% order.order_products.each do |order_product| %>
                 <li>
