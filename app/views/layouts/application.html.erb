@@ -18,7 +18,7 @@
 
   </head>
 
-  <body class="bodyApp">
+  <body class="bodyApp" data-current-user-id="<%= current_user ? current_user.id : "" %>">
     <% if flash[:alert] %>
       <div class="alert alert-warning">
         <%= flash[:alert] %>

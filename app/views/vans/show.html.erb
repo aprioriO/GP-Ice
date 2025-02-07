@@ -19,9 +19,28 @@
       <div class="van-info">
         <h1><%= @van.name %></h1>
         <p>⭐⭐⭐⭐⭐</p>
-        <p type="button" class="btn btn-review" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div>
+          <p type="button" class="btn btn-review" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Reviews
         </p>
+          <% if @orders.exists? %>
+          <p type="button" class="btn btn-review" >
+                  <% @orders.each do |order| %>
+                    <%= link_to "Chat", order_path(order), style: "text-decoration: none; color: white;"%>
+                  <% end %>
+          </p>
+
+           <% elsif @van.orders.exists? %>
+           <p type="button" class="btn btn-review" >
+
+                  <% @van.orders.each do |v| %>
+                    <%= link_to "Chat", order_path(v), style: "text-decoration: none; color: white;"%>
+                  <% end %>
+          </p>
+          <% end %>
+        </div>
+
+
           <% if @favourite %>
             <%= button_to "🩷", favourite_path(@favourite, van_id: @van.id), method: :delete, class: "btn-heart" %>
           <% else %>
@@ -61,8 +80,6 @@
     </ul>
   <% end %>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

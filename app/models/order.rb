@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   has_one :review, dependent: :destroy
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
+  has_many :messages
 
   validates :user_id, :van_id, presence: true
   validates :confirmed_status, :paid_status, inclusion: { in: [true, false] }

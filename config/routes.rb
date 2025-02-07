@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   delete "cart/clear", to: "order_products#clear", as: :clear_cart
 
   resources :orders, only: %i[index show new create] do
+    resources :messages, only: :create
     resources :reviews, only: %i[index new create show]
     get "checkout", to: "orders#checkout", as: :checkout
   end
