@@ -20,13 +20,13 @@
         <h1><%= @van.name %></h1>
         <p>⭐⭐⭐⭐⭐</p>
         <div>
-          <p type="button" class="btn btn-review" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <p type="button" class="btn btn-review" style="color: black;" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Reviews
         </p>
           <% if @orders.exists? %>
           <p type="button" class="btn btn-review" >
                   <% @orders.each do |order| %>
-                    <%= link_to "Chat", order_path(order), style: "text-decoration: none; color: white;"%>
+                    <%= link_to "Chat", order_path(order), style: "text-decoration: none; color: black;"%>
                   <% end %>
           </p>
 
@@ -34,7 +34,7 @@
            <p type="button" class="btn btn-review" >
 
                   <% @van.orders.each do |v| %>
-                    <%= link_to "Chat", order_path(v), style: "text-decoration: none; color: white;"%>
+                    <%= link_to "Chat", order_path(v), style: "text-decoration: none; color: black;"%>
                   <% end %>
           </p>
           <% end %>

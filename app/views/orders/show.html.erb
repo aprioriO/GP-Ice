@@ -1,10 +1,13 @@
+<div class="btn-back">
+    <%= link_to "< Back to store", van_path(@van) %>
+</div>
+
+
 
 <div class="container">
-<div>
-    <%= link_to "< Back to store", van_path(@van), class: "btn btn-back" %>
-  </div>
+  <div class="container-form">
 <div class="container chat">
-  <h1>Chat</h1>
+  <h1 class="pink-title">Chat</h1>
   <%= turbo_stream_from "order_#{@order.id}_messages" %>
   <div id="messages" class="messages">
   <% @order.messages.each do |message| %>
@@ -23,5 +26,7 @@
       <%= f.submit "Send", class: "btn btn-review m-3" %>
     <% end %>
 
-</div>
+
+    </div>
+  </div>
 </div>
