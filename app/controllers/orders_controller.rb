@@ -40,6 +40,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @message = Message.new
+    @van = Van.find(@order.van_id)
+
   end
 
   def update

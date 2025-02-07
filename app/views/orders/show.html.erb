@@ -1,39 +1,27 @@
-<h1>Order Details</h1>
 
-<p><strong>Order ID:</strong> <%= @order.id %></p>
-<p><strong>User Email:</strong> <%= @order.user.email %></p>
-<p><strong>Confirmed Status:</strong> <%= @order.confirmed_status %></p>
-<p><strong>Paid Status:</strong> <%= @order.paid_status %></p>
-
-
-<h2>Order #<%= @order.id %></h2>
-<p>Status: <%= @order.confirmed_status ? "Confirmed" : "Pending" %></p>
-
-<h3>Products in this order:</h3>
-<ul>
-  <% @order.order_products.each do |order_product| %>
-    <li>
-      <%= order_product.product.name %> -
-      $<%= order_product.product.inventories.first.price if order_product.product.inventories.any? %>
-      <%= button_to "Remove", cart_path(@order, order_product),
-                    method: :delete, class: "btn btn-danger btn-sm" %>
-    </li>
-  <% end %>
-</ul>
-
-<% unless @order.confirmed_status %>
-  <%= link_to "Proceed to Checkout", order_checkout_path(@order), class: "btn btn-success" %>
-<% end %>
-
-<h3>Add a Product</h3>
-<%= form_with model: OrderProduct.new, url: cart_path(@order), method: :post do |f| %>
-  <div class="form-group">
-    <%= f.label :product_id, "Select a Product" %>
-    <%= f.collection_select :product_id, Product.all, :id, :name, prompt: "Choose a product", class: "form-control" %>
+<div class="container">
+<div>
+    <%= link_to "< Back to store", van_path(@van), class: "btn btn-back" %>
   </div>
+<div class="container chat">
+  <h1>Chat</h1>
+  <%= turbo_stream_from "order_#{@order.id}_messages" %>
+  <div id="messages" class="messages">
+  <% @order.messages.each do |message| %>
+    <%= render "messages/message", message: message,  user: current_user  %>
+  <% end %>
+</div>
+    <%= simple_form_for [@order, @message],
+      html: {class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
+    %>
+      <% other_user = current_user == @order.van.user ? @order.user : @order.van.user %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message #{other_user.first_name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-review m-3" %>
+    <% end %>
 
-  <%= f.submit "Add to Order", class: "btn btn-primary" %>
-<% end %>
-
-<%= link_to 'Back to Orders', van_orders_path(@order.van) %>
-<%= link_to "Back to Orders List", orders_path, class: "btn btn-secondary" %>
+</div>
+</div>

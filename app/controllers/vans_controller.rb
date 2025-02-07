@@ -14,6 +14,7 @@ class VansController < ApplicationController
 
   def create
     @van = current_user.build_van(van_params)
+    @van.user = current_user
 
     if @van.save
       flash[:notice] = "You are now a van driver!"
@@ -43,8 +44,10 @@ class VansController < ApplicationController
     @inventories = @van.inventories.includes(:product)
     @favourite = Favourite.find_by(van: @van, user: current_user)
     # @product = @inventories.find_by(product_id: params[:id])
-    @orders = Order.where(van_id: params[:id])
+    # @orders = Order.where(van_id: params[:id])
+    @orders = @van.orders.where(user: current_user)
     @reviews = Review.where(order_id: @orders.pluck(:id))
+   
 
   end
 
