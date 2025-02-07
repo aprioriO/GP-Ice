@@ -1,6 +1,9 @@
-<div class="container1">
+<div class="container">
+  <div class="btn-back">
+    <%= link_to "< Home", root_path%>
+  </div>
   <div class="container2">
-  <h2 class="white-title">My Cart</h2>
+    <h2 class="white-title">My Cart</h2>
   </div>
 </div>
 
@@ -38,11 +41,10 @@
 
             <%= link_to "Proceed to Checkout", order_checkout_path(order), class: "btn-main" %>
             <hr class="product-line">
+          <% else %>
+            <p class="empty-cart">Your cart is empty. Choose the nearest van and buy some ice cream. <i class="far fa-smile"></i></p>
+          <% end %>
           <% end %>
         <% end %>
-
-      <% else %>
-        <p>Your cart is empty.</p>
-      <% end %>
     </div>
   </div>
