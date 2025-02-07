@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :favourites
   has_many :favourite_vans, through: :favourites, source: :van
+  has_many :messages, through: :orders, dependent: :destroy
 
   validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
