@@ -2,6 +2,7 @@
 # require "open-uri"
 require 'faker'
 # Clear existing records
+Message.destroy_all
 Review.destroy_all
 Order.destroy_all
 Favourite.destroy_all
